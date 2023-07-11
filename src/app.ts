@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
+require('express-async-errors')
 import express, { NextFunction, Request, Response } from 'express'
 import { config } from 'dotenv'
 import cors from 'cors'
@@ -8,22 +8,6 @@ import { MongoClient } from './database/mongo'
 
 const app = express()
 
-app.use('/api', routes)
-
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  if (err instanceof Error) {
-    return res.status(400).json({
-      message: err.message
-    })
-  }
-  res.status(500).json({
-    status: 'error',
-    message: `Internal server error - ${err}`
-  })
-
-  next()
-})
-
 async function main() {
   config()
 
@@ -31,6 +15,21 @@ async function main() {
   app.use(express.json())
 
   await MongoClient.connect()
+
+  app.use('/api', routes)
+
+  routes.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    if (err instanceof Error) {
+      return res.status(400).json({
+        success: false,
+        message: err.message
+      })
+    }
+    res.status(500).json({
+      status: 'error',
+      message: `Internal server error - ${err}`
+    })
+  })
 }
 
 main()

@@ -14,7 +14,7 @@ export class CreateUserService {
     const existUser = await this.userRepository.existsUser(username)
 
     if (existUser) {
-      return new Error('User already exists')
+      throw new Error('User already exists')
     }
 
     const passwordHash = await hash(password, 8)

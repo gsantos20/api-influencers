@@ -23,6 +23,11 @@ export class CreateUserController {
       }
     })
 
+    const username = request.body!.username
+    if (username.length < 3) {
+      throw new Error('Username must be at least 3 characters')
+    }
+
     const emailIsValid = validator.isEmail(request.body!.email)
     if (!emailIsValid) {
       throw new Error('E-mail is invalid')
