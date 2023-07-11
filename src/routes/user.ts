@@ -1,0 +1,24 @@
+// import { ensuredAuthenticated } from '@/middleware/ensuredAuthenticated'
+import express, { Router } from 'express'
+import { CreateUserController } from '@/controllers/CreateUserController'
+import { CreateUserService } from '@/services/CreateUserService'
+import { MongoUsersRepository } from '@/repositories/mongo/MongoUsersRepository'
+
+const userRoutes: Router = express.Router()
+
+const mongoUsersRepository = new MongoUsersRepository()
+
+// userRoutes.get('/', async (req: Request, res: Response) => {
+//   const getUserController = new GetUsersController(mongoUsersRepository)
+
+//   getUserController.handle(req, res)
+// })
+
+userRoutes.post('/', async (req, res, next) => {
+  const createUserService = new CreateUserService(mongoUsersRepository)
+  const createUserController = new CreateUserController(createUserService)
+
+  createUserController.handle(req, res, next)
+})
+
+export default userRoutes
