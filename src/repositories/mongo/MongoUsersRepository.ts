@@ -1,4 +1,4 @@
-import { User } from '@/models/User'
+import { User } from '@models/User'
 import { MongoClient } from '../../database/mongo'
 import { IUsersRepository } from '../IUsersRepositories'
 

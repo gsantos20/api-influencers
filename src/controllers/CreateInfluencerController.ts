@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Request, Response } from 'express'
 import validator from 'validator'
-import { Influencer } from '../models/Influencer'
-import { IInfluencersRepository } from '@/repositories/IInfluencersRepositories'
+import { Influencer } from '@models/Influencer'
+import { IInfluencersRepository } from '@repositories/IInfluencersRepositories'
 
 export class CreateInfluencerController {
   constructor(private readonly InfluencerRepository: IInfluencersRepository) {}

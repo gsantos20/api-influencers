@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { SessionService } from '@/services/SessionService'
-import { User } from '@/models/User'
+import { SessionService } from '@services/SessionService'
+import { User } from '@models/User'
 
 export class SessionController {
   constructor(private sessionService: SessionService) {}

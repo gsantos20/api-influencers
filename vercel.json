@@ -1,8 +1,4 @@
 {
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "outputDirectory": "dist",
   "version": 2,
   "builds" : [
     {
@@ -13,7 +9,7 @@
   "routes": [
       {
         "src": "(.*)",
-        "dest": "dist/server.ts"
+        "dest": "dist/server.js"
       }
   ]
 }

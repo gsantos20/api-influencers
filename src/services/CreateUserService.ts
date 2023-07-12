@@ -1,6 +1,6 @@
 import { hash } from 'bcryptjs'
 import { User } from '../models/User'
-import { IUsersRepository } from '@/repositories/IUsersRepositories'
+import { IUsersRepository } from '@repositories/IUsersRepositories'
 
 export class CreateUserService {
   constructor(private readonly userRepository: IUsersRepository) {}

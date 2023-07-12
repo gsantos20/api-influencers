@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
     "start": "node dist/server.js",
+    "vercel-build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored --no-comments",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored --no-comments"
   },
   "keywords": [],
@@ -21,6 +22,7 @@
     "jsonwebtoken": "^9.0.1",
     "lodash": "^4.17.21",
     "mongodb": "^4.12.1",
+    "ts-node": "^10.9.1",
     "uuid": "^8.3.2",
     "validator": "^13.7.0"
   },

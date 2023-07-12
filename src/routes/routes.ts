@@ -2,10 +2,10 @@
 import express, { NextFunction, Request, Response, Router } from 'express'
 import userRoutes from './user'
 import influencerRoutes from './influencer'
-import { SessionService } from '@/services/SessionService'
-import { SessionController } from '@/controllers/SessionController'
-import { MongoUsersRepository } from '@/repositories/mongo/MongoUsersRepository'
-import { ensuredAuthenticated } from '@/middlewares/ensuredAuthenticated'
+import { SessionService } from '@services/SessionService'
+import { SessionController } from '@controllers/SessionController'
+import { MongoUsersRepository } from '@repositories/mongo/MongoUsersRepository'
+import { ensuredAuthenticated } from '@middlewares/ensuredAuthenticated'
 
 const routes: Router = express.Router()
 

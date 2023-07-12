@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { Influencer } from '../models/Influencer'
+import { Influencer } from '@models/Influencer'
 
 export interface IInfluencersRepository {
   getInfluencers(params?: any): Promise<Influencer[]>
