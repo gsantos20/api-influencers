@@ -35,17 +35,19 @@ Influencer {
   email: string
 }</pre>
 
-## Rotas
+### Rotas
 
-
-- POST /users - cria um usuário
-- DELETE /influencer/:id - deleta um usuário
-- POST /login - gera um token de autenticação
-
+   ### Users
   
-- GET /influencer - retorna os influenciadores salvos no banco
-- PUT /influencer/:id - atualiza um influenciador
-- DELETE /influencer/:id - deleta um influenciador
+  - POST /user - cria um usuário
+  - DELETE /user/:id - deleta um usuário
+  - POST /login - gera um token de autenticação do login
+  
+   ### Influenciador
+    
+  - GET /influencer - retorna os influenciadores salvos no banco
+  - PUT /influencer/:id - atualiza um influenciador
+  - DELETE /influencer/:id - deleta um influenciador
 
 ## Arquitetura
 
