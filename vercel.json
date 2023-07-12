@@ -1,4 +1,9 @@
 {
+  "git": {
+    "deploymentEnabled": {
+      "main": false
+    }
+  },
   "version": 2,
   "buildCommand": "npm run vercel-build",
   "builds" : [
@@ -13,4 +18,5 @@
         "dest": "dist/server.js"
       }
   ]
+
 }
