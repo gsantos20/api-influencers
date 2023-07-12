@@ -10,7 +10,7 @@ class MongoUsersRepository implements IUsersRepository {
     firstName,
     lastName,
     email
-  }: Omit<User, 'id'>) {
+  }: Omit<User, '_id'>) {
     const { insertedId } = await MongoClient.db.collection('users').insertOne({
       username,
       password,
@@ -19,9 +19,13 @@ class MongoUsersRepository implements IUsersRepository {
       email
     })
 
+
+
+
     const user = await MongoClient.db
-      .collection<User>('users')
-      .findOne({ ObjectId: insertedId })
+      .collection<WithId<Document>>('users')
+      .findOne<User>( { _id: insertedId } )
+
 
     return user
   }
