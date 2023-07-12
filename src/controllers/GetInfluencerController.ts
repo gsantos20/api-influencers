@@ -4,7 +4,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { Influencer } from '../models/Influencer'
 import { pick } from 'lodash'
-import { IInfluencersRepository } from '@repositories/IInfluencersRepositories'
+import { IInfluencersRepository } from '@/repositories/IInfluencersRepositories'
 
 export class GetInfluencersController {
   constructor(private readonly InfluencersRepository: IInfluencersRepository) {}

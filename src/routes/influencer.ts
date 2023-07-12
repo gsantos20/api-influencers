@@ -1,7 +1,7 @@
 import express, { Router } from 'express'
 import { GetInfluencersController } from '../controllers/GetInfluencerController'
-import { CreateInfluencerController } from '@controllers/CreateInfluencerController'
-import { MongoInfluencersRepository } from '@repositories/mongo/MongoInfluencersRepository'
+import { CreateInfluencerController } from '@/controllers/CreateInfluencerController'
+import { MongoInfluencersRepository } from '@/repositories/mongo/MongoInfluencersRepository'
 
 const influencerRoutes: Router = express.Router()
 require('express-async-errors')

@@ -1,8 +1,7 @@
-// import { ensuredAuthenticated } from '@/middleware/ensuredAuthenticated'
 import express, { Router } from 'express'
-import { CreateUserController } from '@controllers/CreateUserController'
-import { CreateUserService } from '@services/CreateUserService'
-import { MongoUsersRepository } from '@repositories/mongo/MongoUsersRepository'
+import { CreateUserController } from '@/controllers/CreateUserController'
+import { CreateUserService } from '@/services/CreateUserService'
+import { MongoUsersRepository } from '@/repositories/mongo/MongoUsersRepository'
 
 const userRoutes: Router = express.Router()
 require('express-async-errors')

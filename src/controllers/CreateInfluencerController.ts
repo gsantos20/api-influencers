@@ -2,7 +2,7 @@
 import { Request, Response } from 'express'
 import validator from 'validator'
 import { Influencer } from '../models/Influencer'
-import { IInfluencersRepository } from '@repositories/IInfluencersRepositories'
+import { IInfluencersRepository } from '@/repositories/IInfluencersRepositories'
 
 export class CreateInfluencerController {
   constructor(private readonly InfluencerRepository: IInfluencersRepository) {}

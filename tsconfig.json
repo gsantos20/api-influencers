@@ -17,11 +17,11 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@controllers/*": ["*", "./src/controllers/*"],
-      "@models/*": ["*", "./src/models/*"],
-      "@repositories/*": ["*", "./src/repositories/*"],
-      "@services/*": ["*", "./src/services/*"],
-      "@middlewares/*": ["*", "./src/middlewares/*"],
+      "@/controllers/*": ["controllers/*"],
+      "@/models/*": ["models/*"],
+      "@/repositories/*": ["repositories/*"],
+      "@/services/*": ["services/*"],
+      "@/middlewares/*": ["middlewares/*"],
     }
   },
   "include": [
