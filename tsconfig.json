@@ -15,17 +15,17 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@/controllers/*": ["controllers/*"],
-      "@/models/*": ["models/*"],
-      "@/repositories/*": ["repositories/*"],
-      "@/services/*": ["services/*"],
-      "@/middlewares/*": ["middlewares/*"],
+      "@controllers/*": ["controllers/*"],
+      "@models/*": ["models/*"],
+      "@repositories/*": ["repositories/*"],
+      "@services/*": ["services/*"],
+      "@middlewares/*": ["middlewares/*"],
     }
   },
   "include": [
-    "src/**/*"
+    "src"
   ],
   "exclude": ["node_modules"]
 }
