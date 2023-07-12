@@ -15,7 +15,7 @@ async function main() {
 
   await MongoClient.connect()
 
-  app.use('/api', routes)
+  app.use('/api/v1/', routes)
 
   routes.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error) {
