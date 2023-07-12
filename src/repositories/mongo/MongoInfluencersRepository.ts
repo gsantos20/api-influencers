@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Influencer } from '../../models/Influencer'
+import { Influencer } from '@models/Influencer'
 import { MongoClient } from '../../database/mongo'
 import { IInfluencersRepository } from '../IInfluencersRepositories'
 
