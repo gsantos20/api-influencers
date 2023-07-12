@@ -27,6 +27,10 @@ export class CreateUserService {
       email
     })
 
+    if (!user) {
+      throw new Error('User not created')
+    }
+
     return user
   }
 }

@@ -1,6 +1,7 @@
 import { User } from '@models/User'
 import { MongoClient } from '../../database/mongo'
 import { IUsersRepository } from '../IUsersRepositories'
+import { Document, WithId } from 'mongodb'
 
 class MongoUsersRepository implements IUsersRepository {
   async createUser({
@@ -9,7 +10,7 @@ class MongoUsersRepository implements IUsersRepository {
     firstName,
     lastName,
     email
-  }: Omit<User, 'id'>): Promise<User | Error> {
+  }: Omit<User, 'id'>) {
     const { insertedId } = await MongoClient.db.collection('users').insertOne({
       username,
       password,
@@ -22,19 +23,14 @@ class MongoUsersRepository implements IUsersRepository {
       .collection<User>('users')
       .findOne({ ObjectId: insertedId })
 
-    if (!user) {
-      throw new Error('User not created')
-    }
-
     return user
   }
 
-  async findUser(username: string): Promise<any> {
+  async findUser(username: string) {
     const user = await MongoClient.db.collection<User>('users').findOne({
       username: username
     })
 
-    user!._id = user!._id.toString()
 
     return user
   }

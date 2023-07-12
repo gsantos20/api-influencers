@@ -2,14 +2,14 @@ import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 import { IUsersRepository } from '@repositories/IUsersRepositories'
 
-type UserRequest = {
+type LoginRequest = {
   username: string
   password: string
 }
 
 export class SessionService {
   constructor(private readonly userRepository: IUsersRepository) {}
-  async execute({ username, password }: UserRequest) {
+  async execute({ username, password }: LoginRequest) {
     const user = await this.userRepository.findUser(username)
 
     if (!user) {
@@ -23,7 +23,7 @@ export class SessionService {
     }
 
     const token = sign({}, process.env.SECRET_JWT, {
-      subject: user._id
+      subject: user._id.toString()
     })
 
     return { token }
