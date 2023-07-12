@@ -51,4 +51,4 @@ Influencer {
 
 ## Arquitetura
 
-// ![Arquitetura](https://imgur.com/k5mXFoZ.png)
+![Arquitetura](https://imgur.com/k5mXFoZ.png)
