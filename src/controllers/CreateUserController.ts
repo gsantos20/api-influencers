@@ -2,7 +2,7 @@
 import validator from 'validator'
 import { Request, Response } from 'express'
 import { User } from '../models/User'
-import { CreateUserService } from '@/services/CreateUserService'
+import { CreateUserService } from '@services/CreateUserService'
 
 export class CreateUserController {
   constructor(private createUserService: CreateUserService) {}
