@@ -14,11 +14,11 @@ const mongoUsersRepository = new MongoUsersRepository()
 //   getUserController.handle(req, res)
 // })
 
-userRoutes.post('/', async (req, res, next) => {
+userRoutes.post('/', async (req, res) => {
   const createUserService = new CreateUserService(mongoUsersRepository)
   const createUserController = new CreateUserController(createUserService)
 
-  createUserController.handle(req, res, next)
+  return createUserController.handle(req, res)
 })
 
 export default userRoutes

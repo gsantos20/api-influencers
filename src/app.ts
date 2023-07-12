@@ -21,7 +21,7 @@ async function main() {
   routes.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error) {
       return res.status(400).json({
-        success: false,
+        error: true,
         message: err.message
       })
     }

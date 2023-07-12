@@ -10,8 +10,8 @@ export class CreateUserService {
     firstName,
     lastName,
     email
-  }: Omit<User, 'id'>): Promise<Error | User> {
-    const existUser = await this.userRepository.existsUser(username)
+  }: Omit<User, '_id'>): Promise<Error | User> {
+    const existUser = await this.userRepository.findUser(username)
 
     if (existUser) {
       throw new Error('User already exists')

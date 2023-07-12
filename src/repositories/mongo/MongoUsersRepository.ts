@@ -20,7 +20,7 @@ class MongoUsersRepository implements IUsersRepository {
 
     const user = await MongoClient.db
       .collection<User>('users')
-      .findOne({ _id: insertedId })
+      .findOne({ ObjectId: insertedId })
 
     if (!user) {
       throw new Error('User not created')
@@ -29,12 +29,14 @@ class MongoUsersRepository implements IUsersRepository {
     return user
   }
 
-  async existsUser(username: string): Promise<boolean> {
-    const user = await MongoClient.db.collection('users').findOne({
+  async findUser(username: string): Promise<any> {
+    const user = await MongoClient.db.collection<User>('users').findOne({
       username: username
     })
 
-    return !!user
+    user!._id = user!._id.toString()
+
+    return user
   }
 }
 

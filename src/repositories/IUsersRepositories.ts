@@ -1,6 +1,6 @@
 import { User } from '../models/User'
 
 export interface IUsersRepository {
-  createUser(user: Omit<User, 'id'>): Promise<User | Error>
-  existsUser(username: string): Promise<boolean>
+  createUser(user: Omit<User, '_id'>): Promise<User | Error>
+  findUser(username: string): Promise<User>
 }
