@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-require('express-async-errors')
 import express, { NextFunction, Request, Response } from 'express'
 import { config } from 'dotenv'
 import cors from 'cors'
