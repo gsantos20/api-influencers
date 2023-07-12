@@ -37,13 +37,13 @@ Influencer {
 
 ### Rotas
 
-   ### Users
+   ## - Users
   
   - POST /user - cria um usuário
   - DELETE /user/:id - deleta um usuário
   - POST /login - gera um token de autenticação do login
   
-   ### Influenciador
+   ## - Influenciador
     
   - GET /influencer - retorna os influenciadores salvos no banco
   - PUT /influencer/:id - atualiza um influenciador
