@@ -5,8 +5,6 @@ import { User } from '@models/User'
 export class SessionController {
   constructor(private sessionService: SessionService) {}
   async handle(request: Request, response: Response) {
-    const { username, password } = request.body
-
     const requiredFields = ['username', 'password']
 
     for (const field of requiredFields) {
@@ -14,6 +12,8 @@ export class SessionController {
         throw new Error(`Field ${field} is required`)
       }
     }
+
+    const { username, password } = request.body
 
     const result = await this.sessionService.execute({ username, password })
 
