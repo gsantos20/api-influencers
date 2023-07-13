@@ -23,24 +23,25 @@ influencerRoutes.get('/influencers', async (req, res) => {
 })
 
 influencerRoutes.post('/influencer', async (req, res) => {
-  const createInfluencerService = new CreateInfluencerService(mongoInfluencerRepository)
+  const createInfluencerService = new CreateInfluencerService(
+    mongoInfluencerRepository
+  )
   const createInfluencerController = new CreateInfluencerController(
     createInfluencerService
   )
-
 
   return createInfluencerController.handle(req, res)
 })
 
 influencerRoutes.patch('/influencer/:_id', async (req, res) => {
-  const updateInfluencerService = new UpdateInfluencerService(mongoInfluencerRepository)
+  const updateInfluencerService = new UpdateInfluencerService(
+    mongoInfluencerRepository
+  )
   const updateInfluencerController = new UpdateInfluencerController(
     updateInfluencerService
   )
 
-
   return updateInfluencerController.handle(req, res)
 })
-
 
 export default influencerRoutes

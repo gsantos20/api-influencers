@@ -1,10 +1,15 @@
-import { IInfluencersRepository, MongoInfluencer } from '@repositories/IInfluencersRepositories'
+import {
+  IInfluencersRepository,
+  MongoInfluencer
+} from '@repositories/IInfluencersRepositories'
 import { Influencer } from '@models/Influencer'
 
 export class CreateInfluencerService {
   constructor(private readonly influencerRepository: IInfluencersRepository) {}
   async execute(params: MongoInfluencer): Promise<Influencer | Error> {
-    const existInfluencer = await this.influencerRepository.findInfluencer(params.email)
+    const existInfluencer = await this.influencerRepository.findInfluencer(
+      params.EmailInfluencer
+    )
 
     if (existInfluencer) {
       throw new Error('Influencer already exists')

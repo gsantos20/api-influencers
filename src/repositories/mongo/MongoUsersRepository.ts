@@ -25,13 +25,17 @@ class MongoUsersRepository implements IUsersRepository {
   }
 
   async findUser(params: any) {
-    const user = await MongoClient.db.collection<MongoUser>('users').findOne<User>(params)
+    const user = await MongoClient.db
+      .collection<MongoUser>('users')
+      .findOne<User>(params)
 
     return user
   }
 
   async deleteUser(id: ObjectId) {
-    const user = await MongoClient.db.collection<MongoUser>('users').findOneAndDelete({ _id: id })
+    const user = await MongoClient.db
+      .collection<MongoUser>('users')
+      .findOneAndDelete({ _id: id })
 
     return !!user
   }

@@ -1,6 +1,9 @@
 export interface Influencer {
   _id: string
-  firstName: string
-  lastName: string
-  email: string
+  NameInfluencer: string
+  EmailInfluencer: string
+  ChannelUsername: string
+  PlatformId: number
+  NumSubs: number
+  ContentCategory: number
 }

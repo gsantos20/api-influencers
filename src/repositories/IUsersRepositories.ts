@@ -1,7 +1,7 @@
 import { User } from '@models/User'
-import { ObjectId } from 'mongodb';
+import { ObjectId } from 'mongodb'
 
-export type MongoUser = Omit<User, "_id">;
+export type MongoUser = Omit<User, '_id'>
 
 export interface IUsersRepository {
   createUser(user: Omit<User, '_id'>): Promise<User | null>

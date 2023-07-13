@@ -2,7 +2,10 @@
 
 import { Influencer } from '@models/Influencer'
 import { MongoClient } from '../../database/mongo'
-import { IInfluencersRepository, MongoInfluencer } from '../IInfluencersRepositories'
+import {
+  IInfluencersRepository,
+  MongoInfluencer
+} from '../IInfluencersRepositories'
 import { ObjectId } from 'mongodb'
 
 class MongoInfluencersRepository implements IInfluencersRepository {
@@ -17,9 +20,8 @@ class MongoInfluencersRepository implements IInfluencersRepository {
 
   async findInfluencer(params: any) {
     const influencer = await MongoClient.db
-    .collection<Influencer>('influencers')
-    .findOne<Influencer>(params)
-
+      .collection<Influencer>('influencers')
+      .findOne<Influencer>(params)
 
     return influencer
   }
@@ -29,17 +31,19 @@ class MongoInfluencersRepository implements IInfluencersRepository {
       .collection('influencers')
       .insertOne(params)
 
-    const influencer = await this.findInfluencer({ _id :insertedId })
-
+    const influencer = await this.findInfluencer({ _id: insertedId })
 
     return influencer
   }
 
   async updateInfluencer(_id: ObjectId, body: MongoInfluencer) {
-
     const influencer = await MongoClient.db
       .collection<MongoInfluencer>('influencers')
-      .findOneAndUpdate( { _id: _id }, {$set: body}, {returnDocument: "after"})
+      .findOneAndUpdate(
+        { _id: _id },
+        { $set: body },
+        { returnDocument: 'after' }
+      )
 
     return influencer.value
   }

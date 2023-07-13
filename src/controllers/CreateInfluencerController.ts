@@ -8,8 +8,13 @@ export class CreateInfluencerController {
   constructor(private createInfluencerService: CreateInfluencerService) {}
 
   async handle(request: Request, response: Response) {
-    const requiredFields = ['firstName', 'lastName', 'email']
-
+    const requiredFields = [
+      'NameInfluencer',
+      'ChannelUsername',
+      'Platform',
+      'NumSubs',
+      'ContentCategory'
+    ]
 
     requiredFields.forEach((el: string) => {
       if (!request.body[el as keyof MongoInfluencer]?.length) {
@@ -19,16 +24,13 @@ export class CreateInfluencerController {
 
     const influencer: MongoInfluencer = { ...request.body }
 
-
-    const emailIsValid = validator.isEmail(influencer.email)
+    const emailIsValid = validator.isEmail(influencer.EmailInfluencer)
 
     if (!emailIsValid) {
       throw new Error('E-mail is invalid')
     }
 
-    const result = await this.createInfluencerService.execute(
-      request.body
-    )
+    const result = await this.createInfluencerService.execute(request.body)
 
     return response.json(result)
   }

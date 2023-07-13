@@ -1,13 +1,11 @@
-
 import { IUsersRepository } from '@repositories/IUsersRepositories'
-import { ObjectId, WithId } from 'mongodb'
+import { ObjectId } from 'mongodb'
 
 export class DeleteUserService {
   constructor(private readonly userRepository: IUsersRepository) {}
   async execute(_id: string): Promise<object | Error> {
-
     const objId = new ObjectId(_id)
-    const existsUser = await this.userRepository.findUser({ _id : objId })
+    const existsUser = await this.userRepository.findUser({ _id: objId })
 
     if (!existsUser) {
       throw new Error('User does not exists')
@@ -20,7 +18,7 @@ export class DeleteUserService {
     }
 
     return {
-      message: 'User deleted with success',
+      message: 'User deleted with success'
     }
   }
 }
