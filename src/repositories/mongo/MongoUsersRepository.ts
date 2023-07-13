@@ -1,7 +1,7 @@
 import { User } from '@models/User'
 import { MongoClient } from '../../database/mongo'
-import { IUsersRepository } from '../IUsersRepositories'
-import { Document, WithId } from 'mongodb'
+import { IUsersRepository, MongoUser } from '../IUsersRepositories'
+import { ObjectId } from 'mongodb'
 
 class MongoUsersRepository implements IUsersRepository {
   async createUser({
@@ -10,7 +10,7 @@ class MongoUsersRepository implements IUsersRepository {
     firstName,
     lastName,
     email
-  }: Omit<User, '_id'>) {
+  }: MongoUser) {
     const { insertedId } = await MongoClient.db.collection('users').insertOne({
       username,
       password,
@@ -19,21 +19,21 @@ class MongoUsersRepository implements IUsersRepository {
       email
     })
 
-    const user = await MongoClient.db
-      .collection<WithId<Document>>('users')
-      .findOne<User>( { _id: insertedId } )
-
+    const user = await this.findUser({ _id: insertedId })
 
     return user
   }
 
-  async findUser(username: string) {
-    const user = await MongoClient.db.collection<User>('users').findOne({
-      username: username
-    })
-
+  async findUser(params: any) {
+    const user = await MongoClient.db.collection<MongoUser>('users').findOne<User>(params)
 
     return user
+  }
+
+  async deleteUser(id: ObjectId) {
+    const user = await MongoClient.db.collection<MongoUser>('users').findOneAndDelete({ _id: id })
+
+    return !!user
   }
 }
 
