@@ -141,7 +141,7 @@ Deleta um influenciador de acordo com o id.
 
 ## Arquitetura
 
-![Arquitetura](https://imgur.com/k5mXFoZ.png)
+![Arquitetura](https://i.imgur.com/nyutXgY.png)
 ####
 ### Tecnologias utilizadas
 
