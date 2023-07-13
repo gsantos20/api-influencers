@@ -19,9 +19,6 @@ class MongoUsersRepository implements IUsersRepository {
       email
     })
 
-
-
-
     const user = await MongoClient.db
       .collection<WithId<Document>>('users')
       .findOne<User>( { _id: insertedId } )

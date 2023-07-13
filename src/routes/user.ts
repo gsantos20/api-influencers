@@ -8,13 +8,13 @@ require('express-async-errors')
 
 const mongoUsersRepository = new MongoUsersRepository()
 
-// userRoutes.get('/', async (req: Request, res: Response) => {
+// userRoutes.get('/users', async (req: Request, res: Response) => {
 //   const getUserController = new GetUsersController(mongoUsersRepository)
 
 //   getUserController.handle(req, res)
 // })
 
-userRoutes.post('/', async (req, res) => {
+userRoutes.post('/user', async (req, res) => {
   const createUserService = new CreateUserService(mongoUsersRepository)
   const createUserController = new CreateUserController(createUserService)
 

@@ -1,6 +1,6 @@
 import { hash } from 'bcryptjs'
 import { User } from '../models/User'
-import { IUsersRepository } from '@repositories/IUsersRepositories'
+import { IUsersRepository, MongoUser } from '@repositories/IUsersRepositories'
 
 export class CreateUserService {
   constructor(private readonly userRepository: IUsersRepository) {}
@@ -10,7 +10,7 @@ export class CreateUserService {
     firstName,
     lastName,
     email
-  }: Omit<User, '_id'>): Promise<Error | User> {
+  }: MongoUser): Promise<User | Error> {
     const existUser = await this.userRepository.findUser(username)
 
     if (existUser) {

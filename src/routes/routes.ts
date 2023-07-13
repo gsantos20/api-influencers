@@ -18,8 +18,8 @@ routes.post('/login', async (req, res) => {
   return sessionController.handle(req, res)
 })
 
-routes.use('/user', userRoutes)
+routes.use('/', userRoutes)
 
-routes.use('/influencer', ensuredAuthenticated(), influencerRoutes)
+routes.use('/', ensuredAuthenticated(), influencerRoutes)
 
 export default routes
