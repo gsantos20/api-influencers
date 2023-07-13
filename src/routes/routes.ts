@@ -11,13 +11,6 @@ import { GetPlatformsService } from '@services/GetPlatformsService'
 
 const routes: Router = express.Router()
 
-routes.get('/platforms', async (req, res) => {
-  const getPlatformService = new GetPlatformsService()
-  const getPlatformController = new GetPlatformController(getPlatformService)
-
-  return getPlatformController.handle(req, res)
-})
-
 routes.post('/login', async (req, res) => {
   const mongoUsersRepository = new MongoUsersRepository()
 
@@ -30,5 +23,12 @@ routes.post('/login', async (req, res) => {
 routes.use('/', userRoutes)
 
 routes.use('/', ensuredAuthenticated(), influencerRoutes)
+
+routes.get('/platforms', ensuredAuthenticated(), async (req, res) => {
+  const getPlatformService = new GetPlatformsService()
+  const getPlatformController = new GetPlatformController(getPlatformService)
+
+  return getPlatformController.handle(req, res)
+})
 
 export default routes
