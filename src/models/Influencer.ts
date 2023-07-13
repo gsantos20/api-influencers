@@ -5,5 +5,5 @@ export interface Influencer {
   ChannelUsername: string
   PlatformId: number
   NumSubs: number
-  ContentCategory: number
+  ContentCategory: string
 }

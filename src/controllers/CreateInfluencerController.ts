@@ -10,14 +10,15 @@ export class CreateInfluencerController {
   async handle(request: Request, response: Response) {
     const requiredFields = [
       'NameInfluencer',
+      'EmailInfluencer',
       'ChannelUsername',
-      'Platform',
+      'PlatformId',
       'NumSubs',
-      'ContentCategory'
+      'ContentCategoryId'
     ]
 
     requiredFields.forEach((el: string) => {
-      if (!request.body[el as keyof MongoInfluencer]?.length) {
+      if (!request.body[el as keyof MongoInfluencer]) {
         throw new Error(`Field ${el} is required`)
       }
     })
@@ -27,7 +28,7 @@ export class CreateInfluencerController {
     const emailIsValid = validator.isEmail(influencer.EmailInfluencer)
 
     if (!emailIsValid) {
-      throw new Error('E-mail is invalid')
+      throw new Error('E-mail Influencer is invalid')
     }
 
     const result = await this.createInfluencerService.execute(request.body)
