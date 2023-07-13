@@ -18,7 +18,7 @@ async function main() {
   app.use('/api/v1/', routes)
 
   app.use((req, res) => {
-      res.status(404).end('Page not found');
+    res.status(404).end('Page not found');
   });
 
   routes.use((err: Error, req: Request, res: Response, next: NextFunction) => {
