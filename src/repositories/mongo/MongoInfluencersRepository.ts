@@ -15,23 +15,10 @@ class MongoInfluencersRepository implements IInfluencersRepository {
     return influencers
   }
 
-  async findInfluencer(email: string) {
+  async findInfluencer(params: any) {
     const influencer = await MongoClient.db
     .collection<Influencer>('influencers')
-    .findOne<Influencer>({
-      email: email
-    })
-
-
-    return influencer
-  }
-
-  async findInfluencerById(_id: string) {
-    const influencer = await MongoClient.db
-    .collection<MongoInfluencer>('influencers')
-    .findOne<Influencer>({
-      _id: new ObjectId(_id)
-    })
+    .findOne<Influencer>(params)
 
 
     return influencer
@@ -42,17 +29,17 @@ class MongoInfluencersRepository implements IInfluencersRepository {
       .collection('influencers')
       .insertOne(params)
 
-    const influencer = await this.findInfluencerById(insertedId.toString())
+    const influencer = await this.findInfluencer({ _id :insertedId })
 
 
     return influencer
   }
 
-  async updateInfluencer(_id: string, body: MongoInfluencer) {
+  async updateInfluencer(_id: ObjectId, body: MongoInfluencer) {
 
     const influencer = await MongoClient.db
       .collection<MongoInfluencer>('influencers')
-      .findOneAndUpdate( { _id: new ObjectId(_id) }, {$set: body}, {returnDocument: "after"})
+      .findOneAndUpdate( { _id: _id }, {$set: body}, {returnDocument: "after"})
 
     return influencer.value
   }

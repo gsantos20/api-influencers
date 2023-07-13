@@ -17,8 +17,8 @@ export class UpdateInfluencerController {
       throw new Error("User id is missing");
     }
 
-    const influencer = await this.updateInfluencerService.execute(_id, request.body)
+    const result = await this.updateInfluencerService.execute(_id, request.body)
 
-    return response.json(influencer)
+    return response.json(result)
   }
 }
