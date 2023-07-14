@@ -1,17 +1,16 @@
 import express, { Router } from 'express'
+import { methodNotAllowed } from '@middlewares/methodNotAllowed'
 import { MongoInfluencersRepository } from '@repositories/mongo/MongoInfluencersRepository'
-
 import { GetInfluencersController } from '@controllers/GetInfluencersController'
-
 import { CreateInfluencerController } from '@controllers/CreateInfluencerController'
 import { CreateInfluencerService } from '@services/CreateInfluencerService'
-
 import { UpdateInfluencerService } from '@services/UpdateInfluencerService'
 import { UpdateInfluencerController } from '@controllers/UpdateInfluencerController'
 import { GetInfluencersService } from '@services/GetInfluencersService'
 import { ensuredAuthenticated } from '@middlewares/ensuredAuthenticated'
 
 const influencerRoutes: Router = express.Router()
+
 require('express-async-errors')
 
 const mongoInfluencerRepository = new MongoInfluencersRepository()
@@ -60,5 +59,9 @@ influencerRoutes.patch(
     return updateInfluencerController.handle(req, res)
   }
 )
+
+influencerRoutes.all('/influencers', methodNotAllowed)
+
+influencerRoutes.all('/influencer', methodNotAllowed)
 
 export default influencerRoutes
