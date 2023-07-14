@@ -9,7 +9,7 @@ import {
 import { ObjectId } from 'mongodb'
 
 class MongoInfluencersRepository implements IInfluencersRepository {
-  async getInfluencers(params?: any): Promise<Influencer[]> {
+  async getInfluencers(params?: Partial<MongoInfluencer>) {
     const influencers = await MongoClient.db
       .collection<Influencer>('influencers')
       .find({ ...params })

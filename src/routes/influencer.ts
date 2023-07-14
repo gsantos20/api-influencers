@@ -1,13 +1,14 @@
 import express, { Router } from 'express'
 import { MongoInfluencersRepository } from '@repositories/mongo/MongoInfluencersRepository'
 
-import { GetInfluencersController } from '@controllers/GetInfluencerController'
+import { GetInfluencersController } from '@controllers/GetInfluencersController'
 
 import { CreateInfluencerController } from '@controllers/CreateInfluencerController'
 import { CreateInfluencerService } from '@services/CreateInfluencerService'
 
 import { UpdateInfluencerService } from '@services/UpdateInfluencerService'
 import { UpdateInfluencerController } from '@controllers/UpdateInfluencerController'
+import { GetInfluencersService } from '@services/GetInfluencersService'
 
 const influencerRoutes: Router = express.Router()
 require('express-async-errors')
@@ -15,8 +16,11 @@ require('express-async-errors')
 const mongoInfluencerRepository = new MongoInfluencersRepository()
 
 influencerRoutes.get('/influencers', async (req, res) => {
-  const getInfluencersController = new GetInfluencersController(
+  const getInfluencersService = new GetInfluencersService(
     mongoInfluencerRepository
+  )
+  const getInfluencersController = new GetInfluencersController(
+    getInfluencersService
   )
 
   return getInfluencersController.handle(req, res)

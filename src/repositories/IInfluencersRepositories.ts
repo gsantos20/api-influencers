@@ -5,7 +5,7 @@ import { ObjectId, WithId } from 'mongodb'
 export type MongoInfluencer = Omit<Influencer, '_id'>
 
 export interface IInfluencersRepository {
-  getInfluencers(params?: any): Promise<Influencer[]>
+  getInfluencers(params?: Partial<MongoInfluencer>): Promise<Influencer[]>
   findInfluencer(params: any): Promise<Influencer | null>
   createInfluencer(Influencer: MongoInfluencer): Promise<Influencer | null>
   updateInfluencer(
