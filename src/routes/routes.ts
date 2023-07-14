@@ -22,7 +22,7 @@ routes.post('/login', async (req, res) => {
 
 routes.use('/', userRoutes)
 
-routes.use('/', ensuredAuthenticated(), influencerRoutes)
+routes.use('/', influencerRoutes)
 
 routes.get('/platforms', ensuredAuthenticated(), async (req, res) => {
   const getPlatformService = new GetPlatformsService()

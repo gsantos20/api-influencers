@@ -7,11 +7,9 @@ export class GetUsersService {
     params: Partial<User>
   ): Promise<Omit<User, 'Password'>[] | Error> {
     const filter = Object.keys(params).reduce((obj, key) => {
-      obj[key] = { $regex: params[key], $options: 'i' }
+      obj[key] = { $regex: '\\' + params[key] + '+', $options: 'i' }
       return obj
     }, {})
-
-    console.log(filter)
 
     const users = await this.userRepository.getUsers(filter)
 
