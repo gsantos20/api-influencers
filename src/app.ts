@@ -21,19 +21,22 @@ async function main() {
   app.use('/api/v1/', routes)
 
   app.use((req, res) => {
-    res.status(404).end('Page not found')
+    res.status(404).json({
+      success: false,
+      data: 'Page not found'
+    })
   })
 
   routes.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error) {
       return res.status(400).json({
-        error: true,
-        message: err.message
+        success: false,
+        data: err.message
       })
     }
     res.status(500).json({
-      status: 'error',
-      message: `Internal server error - ${err}`
+      success: false,
+      data: `Internal server error - ${err}`
     })
   })
 }

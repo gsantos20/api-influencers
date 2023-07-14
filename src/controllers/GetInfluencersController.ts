@@ -21,8 +21,8 @@ export class GetInfluencersController {
       'ContentCategory'
     ])
 
-    const influencers = await this.getInfluencersService.execute(params)
+    const result = await this.getInfluencersService.execute(params)
 
-    return response.json(influencers).status(200)
+    return response.json({ success: true, data: result })
   }
 }

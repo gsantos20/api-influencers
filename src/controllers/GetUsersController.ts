@@ -22,8 +22,8 @@ export class GetUsersController {
       'LastName'
     ])
 
-    const influencers = await this.getUsersService.execute(params)
+    const result = await this.getUsersService.execute(params)
 
-    return response.json(influencers).status(200)
+    return response.json({ success: true, data: result })
   }
 }

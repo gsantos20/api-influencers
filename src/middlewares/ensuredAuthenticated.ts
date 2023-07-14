@@ -8,7 +8,7 @@ export const ensuredAuthenticated = () => {
     if (!authHeaders) {
       return response
         .status(401)
-        .json({ error: true, message: 'Token is missing' })
+        .json({ success: false, data: 'Token is missing' })
     }
 
     const [, token] = authHeaders.split(' ')

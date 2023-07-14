@@ -14,6 +14,6 @@ export class DeleteUserController {
 
     const result = await this.deleteUserService.execute(_id)
 
-    return response.json(result)
+    return response.json({ success: true, data: result })
   }
 }

@@ -12,8 +12,8 @@ export class GetPlatformController {
       'Active'
     ])
 
-    const platforms = await this.getPlatformsService.execute(params)
+    const result = await this.getPlatformsService.execute(params)
 
-    return response.json(platforms).status(200)
+    return response.json({ success: true, data: result })
   }
 }

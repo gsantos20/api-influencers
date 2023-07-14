@@ -35,6 +35,6 @@ export class CreateUserController {
 
     const result = await this.createUserService.execute(user)
 
-    return response.json(result)
+    return response.json({ success: true, data: result })
   }
 }

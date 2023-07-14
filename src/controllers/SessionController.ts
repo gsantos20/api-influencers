@@ -22,6 +22,6 @@ export class SessionController {
 
     const result = await this.sessionService.execute(queryParams)
 
-    return response.json(result)
+    return response.json({ success: true, data: result })
   }
 }

@@ -33,6 +33,6 @@ export class CreateInfluencerController {
 
     const result = await this.createInfluencerService.execute(request.body)
 
-    return response.json(result)
+    return response.json({ success: true, data: result })
   }
 }

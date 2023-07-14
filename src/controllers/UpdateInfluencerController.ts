@@ -19,6 +19,6 @@ export class UpdateInfluencerController {
 
     const result = await this.updateInfluencerService.execute(_id, request.body)
 
-    return response.json(result)
+    return response.json({ success: true, data: result })
   }
 }
