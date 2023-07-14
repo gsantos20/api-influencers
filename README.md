@@ -1,5 +1,5 @@
 
-# Dashboard API
+# Influencers API
 
 Uma breve descrição sobre o que esse projeto faz e para quem ele é
 
@@ -141,7 +141,12 @@ Deleta um influenciador de acordo com o id.
 
 ## Arquitetura
 
-![Arquitetura](https://imgur.com/k5mXFoZ.png)
+![Arquitetura]
+
+(https://i.imgur.com/nyutXgY.png)
+
+(https://i.imgur.com/7hYVHJl.png)
+
 ####
 ### Tecnologias utilizadas
 
