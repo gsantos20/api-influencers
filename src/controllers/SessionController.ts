@@ -12,7 +12,7 @@ export class SessionController {
       return acc
     }, {} as Login)
 
-    const requiredFields = ['Username', 'Password']
+    const requiredFields = ['Email', 'Password']
 
     for (const field of requiredFields) {
       if (!queryParams[field as keyof User]?.length) {

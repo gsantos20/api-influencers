@@ -5,8 +5,8 @@ import { Login } from '@models/Login'
 
 export class SessionService {
   constructor(private readonly userRepository: IUsersRepository) {}
-  async execute({ Username, Password }: Login) {
-    const user = await this.userRepository.findUser({ Username: Username })
+  async execute({ Email, Password }: Login) {
+    const user = await this.userRepository.findUser({ Username: Email })
 
     if (!user) {
       throw new Error('User does not exists!')
