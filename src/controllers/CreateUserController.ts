@@ -9,11 +9,11 @@ export class CreateUserController {
 
   async handle(request: Request, response: Response) {
     const requiredFields: Array<keyof MongoUser> = [
-      'username',
-      'password',
-      'firstName',
-      'lastName',
-      'email'
+      'Username',
+      'Email',
+      'Password',
+      'FirstName',
+      'LastName'
     ]
 
     requiredFields.forEach((el: string) => {
@@ -24,16 +24,16 @@ export class CreateUserController {
 
     const user: MongoUser = { ...request.body }
 
-    if (user.username.length < 3) {
+    if (user.Username.length < 3) {
       throw new Error('Username must be at least 3 characters')
     }
 
-    const emailIsValid = validator.isEmail(request.body!.email)
+    const emailIsValid = validator.isEmail(user.Email)
     if (!emailIsValid) {
       throw new Error('E-mail is invalid')
     }
 
-    const result = await this.createUserService.execute(request.body)
+    const result = await this.createUserService.execute(user)
 
     return response.json(result)
   }

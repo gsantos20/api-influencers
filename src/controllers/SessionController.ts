@@ -5,7 +5,7 @@ import { User } from '@models/User'
 export class SessionController {
   constructor(private sessionService: SessionService) {}
   async handle(request: Request, response: Response) {
-    const requiredFields = ['username', 'password']
+    const requiredFields = ['Username', 'Password']
 
     for (const field of requiredFields) {
       if (!request?.body?.[field as keyof User]?.length) {

@@ -4,19 +4,28 @@ import { IUsersRepository, MongoUser } from '../IUsersRepositories'
 import { ObjectId } from 'mongodb'
 
 class MongoUsersRepository implements IUsersRepository {
+  async getUsers(params: Partial<MongoUser>) {
+    const users = await MongoClient.db
+      .collection<User>('users')
+      .find<User>(params)
+      .toArray()
+
+    return users
+  }
+
   async createUser({
-    username,
-    password,
-    firstName,
-    lastName,
-    email
+    Username,
+    Email,
+    Password,
+    FirstName,
+    LastName
   }: MongoUser) {
     const { insertedId } = await MongoClient.db.collection('users').insertOne({
-      username,
-      password,
-      firstName,
-      lastName,
-      email
+      Username,
+      Email,
+      Password,
+      FirstName,
+      LastName
     })
 
     const user = await this.findUser({ _id: insertedId })
