@@ -1,25 +1,26 @@
 import { Request, Response } from 'express'
 import { SessionService } from '@services/SessionService'
 import { User } from '@models/User'
+import _ from 'lodash'
+import { Login } from '@models/Login'
 
 export class SessionController {
   constructor(private sessionService: SessionService) {}
   async handle(request: Request, response: Response) {
+    const queryParams = Object.keys(request.body).reduce((acc, key) => {
+      acc[_.capitalize(key)] = request.body[key]
+      return acc
+    }, {} as Login)
+
     const requiredFields = ['Username', 'Password']
 
     for (const field of requiredFields) {
-      if (!request?.body?.[field as keyof User]?.length) {
+      if (!queryParams[field as keyof User]?.length) {
         throw new Error(`Field ${field} is required`)
       }
     }
 
-    const { username, password } = request.body
-
-    const result = await this.sessionService.execute({ username, password })
-
-    if (result instanceof Error) {
-      throw new Error(result.message)
-    }
+    const result = await this.sessionService.execute(queryParams)
 
     return response.json(result)
   }
