@@ -1,78 +1,135 @@
 
-# Influencers API
-
-Uma breve descrição sobre o que esse projeto faz e para quem ele é
+# Dashboard Influencers
 
 
-## Configurações local
+
+## 💻 Sobre o projeto
+
+♻️ Ecoleta - é uma forma de conectar empresas e entidades de coleta de resíduos orgânicos e inorgânicos as pessoas que precisam descartar seus resíduos de maneira ecológica.
+
+
+
+---
+
+## 🚀 Como executar o projeto
+
+Este projeto é divido em duas partes:
+ 1. [BackEnd](https://github.com/gsantos20/api-influencers.git)
+ 2. [FrontEnd](https://github.com/gsantos20/dashboard-influencers.git)
+
+💡 Tanto o Frontend precisam que o Backend esteja sendo executado para funcionar.
+
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+
+### Configurações local
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env, o modelo esta no arquivo .env.example do
 
 `MONGODB_URL` - Url de acesso do banco de dados mongo db.
 
-### Exemplo : mongodb+srv://cluster0.example.mongodb.net
+#### Exemplo : mongodb+srv://cluster0.example.mongodb.net
 
 `MONGODB_USERNAME` - Usuario para acesso a base de dados
 
-### Exemplo : user_example 
+#### Exemplo : user_example 
 
 `MONGODB_PASSWORD` - Senha do usuario para acesso a base de dados
 
-### Exemplo : password_example
+#### Exemplo : password_example
 
 `SECRET_JWT` - Token gerado aleatoriamente para autenticação
 
-### Exemplo : puxTF6gyKQ00VQyWZCGjyWGosxCD4vSo
+#### Exemplo : puxTF6gyKQ00VQyWZCGjyWGosxCD4vSo
 
-### Iniciar o projeto localmente
 
-Clone o projeto
+
+### Executando a aplicação
+
+#### 🎲 Rodando o Backend ( API )
 
 ```bash
-  git clone https://github.com/gsantos20/api-dashboard.git
+
+# Clone este repositório
+$ git clone git@github.com:gsantos20/api-influencers.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd api-influencers
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
+
+# O servidor inciará na porta:3000 - acesse http://localhost:3000 
 ```
 
-Entre no diretório do projeto
+#### 🧭 Rodando a aplicação web (Frontend)
 
 ```bash
-  cd api-dashboard
+
+# Clone este repositório
+$ git clone git@github.com:gsantos20/dashboard-influencers.git
+
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd dashboard-influencers
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
+
+# A aplicação será aberta na porta:4000 - acesse http://localhost:4000
+
 ```
 
-Instale as dependências
+
+#### 🔒  Iniciar Testes
 
 ```bash
-  npm install
-```
+# No Terminal use os seguintes comandos
 
-Inicie o servidor
-
-```bash
-  npm run dev
-```
-
-### Iniciar Testes
-
-No Terminal use os seguintes comandos
-
-```bash
 npm run test
 ```
 
-### Build do Projeto
+#### ⚙ Build do Projeto
 
-No Terminal use os seguintes comandos
 
 ```bash
+# No Terminal use os seguintes comandos
+
 npm build
 
 node dist/server.js
 ```
 
 
-## Documentação da API
+## 📖 Documentação da API
 
 
-### Usuarios
+ - #### Usuarios
+
+```http
+  GET /api/v1/users
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `Username` | `string` | Nome de usuario unico |
+| `Email` | `string` | Email do usuario |
+| `FirstName` | `string` | Nome do Usuario |
+| `LastName` | `string` | Sobrenome do Usuario |
+
+ Retorna um JSON de usuarios de acordo com os parametros.
+
+### 
 
 ```http
   POST /api/v1/user
@@ -80,13 +137,28 @@ node dist/server.js
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `username` | `string` | **Obrigatório**. Nome de usuario unico |
-| `password` | `string` | **Obrigatório**. Senha do usuario |
-| `email` | `string` | **Obrigatório**. Email do Usuario |
-| `firstName` | `string` | **Obrigatório**. Nome do Usuario |
-| `lastName` | `string` | **Obrigatório**. Sobrenome do Usuario |
+| `Username` | `string` | **Obrigatório**. Nome de usuario unico |
+| `Password` | `string` | **Obrigatório**. Senha do usuario |
+| `Email` | `string` | **Obrigatório**. Email do Usuario |
+| `FirstName` | `string` | **Obrigatório**. Nome do Usuario |
+| `LastName` | `string` | **Obrigatório**. Sobrenome do Usuario |
 
-Retorna um JSON com o usuario cadastrado
+Retorna um JSON com o usuario cadastrado.
+
+### 
+
+```http
+  POST /api/v1/login
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `Username` | `string` | **Obrigatório**. Nome de usuario unico |
+| `Password` | `string` | **Obrigatório**. Senha do usuario |
+
+Retorna um objeto com um token de login do usuario.
+
+### 
 
 ```http
   DELETE /api/v1/user/:id
@@ -97,10 +169,11 @@ Retorna um JSON com o usuario cadastrado
 | `id`      | `string` | Identificador do influenciador |      
 | `Bearear Token`      | `Bearer` | Token de autenticação de login |
 
-Deleta um influenciador de acordo com o id.
+Deleta um usuario de acordo com o id.
 
+### 
 
-### Influenciadores
+ - #### Influenciadores
 
 ```http
   GET /api/v1/influencers
@@ -115,9 +188,10 @@ Deleta um influenciador de acordo com o id.
 
 Retorna um JSON de influenciadores de acordo com os parametros.
 
+### 
 
 ```http
-  PATCH /api/v1/influencers/:id
+  PATCH /api/v1/influencer/:id
 ```
 
 | Parâmetro   | Tipo       | Descrição                                   |
@@ -127,8 +201,10 @@ Retorna um JSON de influenciadores de acordo com os parametros.
 
 Atualiza um influenciador de acordo com o id.
 
+### 
+
 ```http
-  DELETE /api/v1/influencers/:id
+  DELETE /api/v1/influencer/:id
 ```
 
 | Parâmetro   | Tipo       | Descrição                                   |
@@ -139,16 +215,45 @@ Atualiza um influenciador de acordo com o id.
 Deleta um influenciador de acordo com o id.
 
 
-## Arquitetura
 
-![Arquitetura]
+## 🏗 Arquitetura
 
-(https://i.imgur.com/nyutXgY.png)
+ * #### Users
 
-(https://i.imgur.com/7hYVHJl.png)
+![Users](https://i.imgur.com/Iz2ro83.png)
 
-####
-### Tecnologias utilizadas
+ * #### Influencers
+
+![Influencers](https://i.imgur.com/7hYVHJl.png)
+
+
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+#### **Backend API**  ([Node.js](https://nodejs.org/en)  +  [TypeScript](https://www.typescriptlang.org/) + [Express](https://expressjs.com/pt-br/) + [MongoDB](https://www.mongodb.com/))
+
+-   **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
+-   **[React Icons](https://react-icons.github.io/react-icons/)**
+-   **[Axios](https://github.com/axios/axios)**
+-   **[Leaflet](https://react-leaflet.js.org/en/)**
+-   **[React Leaflet](https://react-leaflet.js.org/)**
+-   **[React Dropzone](https://github.com/react-dropzone/react-dropzone)**
+
+> Veja o arquivo  [package.json](https://github.com/gsantos20/api-dashboard/blob/main/package.json)
+
+#### **Frontend Web**  ([Angular](https://nodejs.org/en)  +  [TypeScript](https://www.typescriptlang.org/))
+
+-   **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
+-   **[React Icons](https://react-icons.github.io/react-icons/)**
+-   **[Axios](https://github.com/axios/axios)**
+-   **[Leaflet](https://react-leaflet.js.org/en/)**
+-   **[React Leaflet](https://react-leaflet.js.org/)**
+-   **[React Dropzone](https://github.com/react-dropzone/react-dropzone)**
+
+> Veja o arquivo  [package.json](https://github.com/gsantos20/influencers-dashboard/blob/main/package.json)
+
 
 - Node.js
 - TypeScript
@@ -156,11 +261,33 @@ Deleta um influenciador de acordo com o id.
 - MongoDB
 - JWT
 
-### Conceitos utilizados
+## 🧾 Conceitos utilizados
 
 - SOLID
 - Injeção de Dependência (Dependency Injection)
 - Repository Pattern
 - Service Pattern
+## 🦸 Autor
 
+<div>
+ <img style="border-radius: 50%;" src="https://avatars3.githubusercontent.com/u/100292023?s=460&u=61b426b901b8fe02e12019b1fdb67bf0072d4f00&v=4" width="100px;" alt=""/>
+   <br />
+ <sub><b>Gustavo Santos</b></sub></a> <a href="https://www.linkedin.com/in/gsantos20">🚀</a>
+</div>
+ <br />
 
+<div>
+  <a href="https://instagram.com/guuztta" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
+  <a href ="mailto:nerisgs20@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+  <a href="https://www.linkedin.com/in/gsantos20" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+</div>
+
+---
+
+## 📝 Licença
+
+Este projeto esta sobe a licença [MIT](./LICENSE).
+
+Feito com ❤️ por Gustavo Santos 👋🏽 [Entre em contato!](https://www.linkedin.com/in/gsantos20/)
+
+---
