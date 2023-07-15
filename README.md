@@ -237,12 +237,16 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 #### **Backend API**  ([Node.js](https://nodejs.org/en)  +  [TypeScript](https://www.typescriptlang.org/) + [Express](https://expressjs.com/pt-br/) + [MongoDB](https://www.mongodb.com/))
 
--   **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
--   **[React Icons](https://react-icons.github.io/react-icons/)**
--   **[Axios](https://github.com/axios/axios)**
--   **[Leaflet](https://react-leaflet.js.org/en/)**
--   **[React Leaflet](https://react-leaflet.js.org/)**
--   **[React Dropzone](https://github.com/react-dropzone/react-dropzone)**
+-   **[Bcryptjs](https://www.npmjs.com/package/bcryptjs)**
+-   **[Cors](https://www.npmjs.com/package/cors)**
+-   **[DotEnv](https://www.npmjs.com/package/dotenv)**
+-   **[Express Async Erros](https://www.npmjs.com/package/express-async-errors)**
+-   **[Express Body Parser Error Handler](https://www.npmjs.com/package/express-body-parser-error-handler)**
+-   **[Json Web Token](https://jwt.io/)**
+-   **[Lodash](https://lodash.com/)**
+-   **[Uuid]([https://lodash.com/](https://www.npmjs.com/package/uuid))**
+-   **[Validator](https://www.npmjs.com/package/validator)**
+
 
 > Veja o arquivo  [package.json](https://github.com/gsantos20/api-dashboard/blob/main/package.json)
 
