@@ -244,7 +244,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Express Body Parser Error Handler](https://www.npmjs.com/package/express-body-parser-error-handler)**
 -   **[Json Web Token](https://jwt.io/)**
 -   **[Lodash](https://lodash.com/)**
--   **[Uuid]([https://lodash.com/](https://www.npmjs.com/package/uuid))**
+-   **[Uuid](https://www.npmjs.com/package/uuid)**
 -   **[Validator](https://www.npmjs.com/package/validator)**
 
 
