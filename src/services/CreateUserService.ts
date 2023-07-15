@@ -5,13 +5,12 @@ import { IUsersRepository, MongoUser } from '@repositories/IUsersRepositories'
 export class CreateUserService {
   constructor(private readonly userRepository: IUsersRepository) {}
   async execute({
-    Username,
     Email,
     Password,
     FirstName,
     LastName
   }: MongoUser): Promise<User | Error> {
-    const existUser = await this.userRepository.findUser({ Username: Username })
+    const existUser = await this.userRepository.findUser({ Username: Email })
 
     if (existUser) {
       throw new Error('User already exists')
@@ -20,7 +19,7 @@ export class CreateUserService {
     const passwordHash = await hash(Password, 8)
 
     const user = await this.userRepository.createUser({
-      Username,
+      Username: Email,
       Email,
       Password: passwordHash,
       FirstName,

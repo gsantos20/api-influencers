@@ -9,7 +9,6 @@ export class CreateUserController {
 
   async handle(request: Request, response: Response) {
     const requiredFields: Array<keyof MongoUser> = [
-      'Username',
       'Email',
       'Password',
       'FirstName',
@@ -23,10 +22,6 @@ export class CreateUserController {
     })
 
     const user: MongoUser = { ...request.body }
-
-    if (user.Username.length < 3) {
-      throw new Error('Username must be at least 3 characters')
-    }
 
     const emailIsValid = validator.isEmail(user.Email)
     if (!emailIsValid) {
