@@ -5,7 +5,16 @@ export class GetInfluencersService {
   constructor(private readonly influencersRepository: IInfluencersRepository) {}
   async execute(params: Partial<Influencer>): Promise<Influencer[] | Error> {
     const filter = Object.keys(params).reduce((obj, key) => {
-      obj[key] = { $regex: params[key], $options: 'i' }
+      const value = params[key]
+
+      if (/^-?\d+$/.test(value)) {
+        obj[key] = { $eq: parseInt(value) }
+      } else if (/^(true|false)$/i.test(value)) {
+        obj[key] = { $e: value.toLowerCase() === 'true' ? true : false }
+      } else {
+        obj[key] = { $regex: value, $options: 'i' }
+      }
+
       return obj
     }, {})
 

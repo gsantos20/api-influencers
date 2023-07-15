@@ -14,7 +14,7 @@ export class CreateInfluencerController {
       'ChannelUsername',
       'PlatformId',
       'NumSubs',
-      'ContentCategoryId'
+      'ContentCategory'
     ]
 
     requiredFields.forEach((el: string) => {

@@ -7,7 +7,16 @@ export class GetUsersService {
     params: Partial<User>
   ): Promise<Omit<User, 'Password'>[] | Error> {
     const filter = Object.keys(params).reduce((obj, key) => {
-      obj[key] = { $regex: '\\' + params[key] + '+', $options: 'i' }
+      const value = params[key]
+
+      if (/^-?\d+$/.test(value)) {
+        obj[key] = { $eq: parseInt(value) }
+      } else if (/^(true|false)$/i.test(value)) {
+        obj[key] = { $e: value.toLowerCase() === 'true' ? true : false }
+      } else {
+        obj[key] = { $regex: value, $options: 'i' }
+      }
+
       return obj
     }, {})
 
