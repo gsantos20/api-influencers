@@ -25,6 +25,10 @@ async function main() {
   app.use('/api/v1/', routes)
 
   app.use((req, res) => {
+    if (req.path === '/') {
+      return res.redirect('/api/v1/')
+    }
+
     res.status(404).json({
       success: false,
       data: 'Page not found'
