@@ -246,7 +246,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 > Veja o arquivo  [package.json](https://github.com/gsantos20/api-dashboard/blob/main/package.json)
 
-#### **Frontend Web**  ([Angular]([https://nodejs.org/en](https://angular.io/))  +  [TypeScript](https://www.typescriptlang.org/))
+#### **Frontend Web**  [Angular](https://angular.io/))  +  [TypeScript](https://www.typescriptlang.org/))
 
 -   **[Angular Material](https://material.angular.io/)**
 -   **[Bootstrap](https://getbootstrap.com/)**
