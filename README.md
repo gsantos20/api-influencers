@@ -80,6 +80,9 @@ $ git clone git@github.com:gsantos20/dashboard-influencers.git
 # Acesse a pasta do projeto no seu terminal/cmd
 $ cd dashboard-influencers
 
+# Instale o framework angular
+$ npm install -g @angular/cli
+
 # Instale as dependências
 $ npm install
 
