@@ -277,12 +277,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 > Veja o arquivo  [package.json](https://github.com/gsantos20/influencers-dashboard/blob/main/package.json)
 
-- Node.js
-- TypeScript
-- Express
-- MongoDB
-- JWT
-
 ## 🧾 Conceitos utilizados
 
 - SOLID
