@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import express, { NextFunction, Request, Response } from 'express'
 import { config } from 'dotenv'
-import cors from 'cors'
+import cors, { CorsOptions } from 'cors'
 import routes from './routes/routes'
 import bodyParserErrorHandler from 'express-body-parser-error-handler'
 
@@ -12,7 +12,11 @@ const app = express()
 async function main() {
   config()
 
-  app.use(cors())
+  const corOptions: CorsOptions = {
+    origin: '*'
+  }
+
+  app.use(cors(corOptions))
   app.use(express.json())
   app.use(bodyParserErrorHandler())
 
