@@ -246,17 +246,32 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 > Veja o arquivo  [package.json](https://github.com/gsantos20/api-dashboard/blob/main/package.json)
 
-#### **Frontend Web**  ([Angular](https://nodejs.org/en)  +  [TypeScript](https://www.typescriptlang.org/))
+#### **Frontend Web**  ([Angular]([https://nodejs.org/en](https://angular.io/))  +  [TypeScript](https://www.typescriptlang.org/))
 
--   **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
--   **[React Icons](https://react-icons.github.io/react-icons/)**
--   **[Axios](https://github.com/axios/axios)**
--   **[Leaflet](https://react-leaflet.js.org/en/)**
--   **[React Leaflet](https://react-leaflet.js.org/)**
--   **[React Dropzone](https://github.com/react-dropzone/react-dropzone)**
+-   **[Angular Material](https://material.angular.io/)**
+-   **[Bootstrap](https://getbootstrap.com/)**
+-   **[Bootstrap Icons](https://icons.getbootstrap.com/)**
+-   **[Bootstrap Select](https://www.npmjs.com/package/bootstrap-select)**
+-   **[Bootswatch](https://bootswatch.com/)**
+-   **[Font Awesome](https://fontawesome.com/icons)**
+-   **[Jquery](https://www.npmjs.com/package/jquery)**
+-   **[Lodash](https://lodash.com/)**
+-   **[Moment](https://momentjs.com/)**
+-   **[Ngx Bootstrap](https://www.npmjs.com/package/ngx-bootstrap)**
+-   **[Ngx Bootstrap Icons](https://www.npmjs.com/package/ngx-bootstrap-icons)**
+-   **[Ngx Mask](https://www.npmjs.com/package/ngx-mask)**
+-   **[Ngx Select Dropdown](https://www.npmjs.com/package/ngx-select-dropdown)**
+-   **[Ngx Select Ex](https://www.npmjs.com/package/ngx-select-ex)**
+-   **[Ngx Spinner](https://www.npmjs.com/package/ngx-spinner)**
+-   **[Ngx Toastr](https://www.npmjs.com/package/ngx-toastr)**
+-   **[RxJs](https://rxjs.dev/)**
+-   **[Sweetalert2](https://sweetalert2.github.io/)**
+-   **[Tslib](https://www.npmjs.com/package/tslib)**
+-   **[Zone.js](https://www.npmjs.com/package/zone.js)**
+-   **[Eslint && Plugins](https://eslint.org/)**
+-   **[Prettier && Plugins](https://prettier.io/)**
 
 > Veja o arquivo  [package.json](https://github.com/gsantos20/influencers-dashboard/blob/main/package.json)
-
 
 - Node.js
 - TypeScript
