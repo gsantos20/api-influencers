@@ -1,8 +1,9 @@
+import { omit } from 'lodash'
 import { User } from '../models/User'
 import { IUsersRepository } from '@repositories/IUsersRepositories'
 
 export class GetUsersService {
-  constructor(private readonly userRepository: IUsersRepository) {}
+  constructor(private userRepository: IUsersRepository) {}
   async execute(
     params: Partial<User>
   ): Promise<Omit<User, 'Password'>[] | Error> {
@@ -22,8 +23,8 @@ export class GetUsersService {
 
     const users = await this.userRepository.getUsers(filter)
 
-    const result = users.map((user) => {
-      const { Password, ...userWithoutPassword } = user
+    const result = users.map((user: User) => {
+      const userWithoutPassword = omit(user, 'Password')
       return userWithoutPassword
     })
 
