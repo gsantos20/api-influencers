@@ -16,6 +16,16 @@ export class CreateInfluencerService {
       throw new Error('Influenciador já existente')
     }
 
+    const existUsernameChannel = await this.influencerRepository.findInfluencer(
+      {
+        ChannelUsername: params.ChannelUsername
+      }
+    )
+
+    if (existUsernameChannel) {
+      throw new Error('Username do canal está em uso')
+    }
+
     const existPlataform = await new GetPlatformsService().execute({
       PlatformId: params.PlatformId
     })
