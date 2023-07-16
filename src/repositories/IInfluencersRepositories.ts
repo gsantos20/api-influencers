@@ -10,7 +10,7 @@ export interface IInfluencersRepository {
   createInfluencer(Influencer: MongoInfluencer): Promise<Influencer | null>
   updateInfluencer(
     _id: ObjectId,
-    body: MongoInfluencer
+    body: Partial<MongoInfluencer>
   ): Promise<WithId<MongoInfluencer> | null>
   deleteInfluencer(_id: ObjectId): Promise<boolean | null>
 }

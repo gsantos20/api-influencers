@@ -10,6 +10,8 @@ import { GetInfluencersService } from '@services/GetInfluencersService'
 import { ensuredAuthenticated } from '@middlewares/ensuredAuthenticated'
 import { DeleteInfluencerService } from '@services/DeleteInfluencerService'
 import { DeleteInfluencerController } from '@controllers/DeleteInfluencerController'
+import { GetInfluencerByIdController } from '@controllers/GetInfluencerByIdController'
+import { GetInfluencerByIdService } from '@services/GetInfluencerByIdService'
 
 const influencerRoutes: Router = express.Router()
 
@@ -29,6 +31,21 @@ influencerRoutes.get(
     )
 
     return getInfluencersController.handle(req, res)
+  }
+)
+
+influencerRoutes.get(
+  '/influencer/:_id',
+  ensuredAuthenticated(),
+  async (req, res) => {
+    const getInfluencerByIdService = new GetInfluencerByIdService(
+      mongoInfluencerRepository
+    )
+    const getInfluencerByIdController = new GetInfluencerByIdController(
+      getInfluencerByIdService
+    )
+
+    return getInfluencerByIdController.handle(req, res)
   }
 )
 
