@@ -7,5 +7,5 @@ export interface IUsersRepository {
   getUsers(params: Partial<MongoUser>): Promise<User[] | []>
   createUser(user: MongoUser): Promise<User | null>
   findUser(params: any): Promise<User | null>
-  deleteUser(id: ObjectId): Promise<boolean | null>
+  deleteUser(_id: ObjectId): Promise<boolean | null>
 }

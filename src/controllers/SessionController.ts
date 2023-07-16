@@ -16,7 +16,7 @@ export class SessionController {
 
     for (const field of requiredFields) {
       if (!queryParams[field as keyof User]?.length) {
-        throw new Error(`Field ${field} is required`)
+        throw new Error(`Campo ${field} é obrigatório`)
       }
     }
 

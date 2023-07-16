@@ -41,10 +41,10 @@ class MongoUsersRepository implements IUsersRepository {
     return user
   }
 
-  async deleteUser(id: ObjectId) {
+  async deleteUser(_id: ObjectId) {
     const user = await MongoClient.db
       .collection<MongoUser>('users')
-      .findOneAndDelete({ _id: id })
+      .findOneAndDelete({ _id: _id })
 
     return !!user
   }

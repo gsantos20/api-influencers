@@ -12,4 +12,5 @@ export interface IInfluencersRepository {
     _id: ObjectId,
     body: MongoInfluencer
   ): Promise<WithId<MongoInfluencer> | null>
+  deleteInfluencer(_id: ObjectId): Promise<boolean | null>
 }

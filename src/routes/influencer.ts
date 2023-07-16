@@ -8,6 +8,8 @@ import { UpdateInfluencerService } from '@services/UpdateInfluencerService'
 import { UpdateInfluencerController } from '@controllers/UpdateInfluencerController'
 import { GetInfluencersService } from '@services/GetInfluencersService'
 import { ensuredAuthenticated } from '@middlewares/ensuredAuthenticated'
+import { DeleteInfluencerService } from '@services/DeleteInfluencerService'
+import { DeleteInfluencerController } from '@controllers/DeleteInfluencerController'
 
 const influencerRoutes: Router = express.Router()
 
@@ -57,6 +59,21 @@ influencerRoutes.patch(
     )
 
     return updateInfluencerController.handle(req, res)
+  }
+)
+
+influencerRoutes.delete(
+  '/influencer/:_id',
+  ensuredAuthenticated(),
+  async (req, res) => {
+    const deleteInfluencerService = new DeleteInfluencerService(
+      mongoInfluencerRepository
+    )
+    const deleteInfluencerController = new DeleteInfluencerController(
+      deleteInfluencerService
+    )
+
+    return deleteInfluencerController.handle(req, res)
   }
 )
 

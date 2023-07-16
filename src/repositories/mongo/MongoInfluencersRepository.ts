@@ -47,6 +47,14 @@ class MongoInfluencersRepository implements IInfluencersRepository {
 
     return influencer.value
   }
+
+  async deleteInfluencer(_id: ObjectId) {
+    const influencer = await MongoClient.db
+      .collection<MongoInfluencer>('influencers')
+      .findOneAndDelete({ _id: _id })
+
+    return !!influencer
+  }
 }
 
 export { MongoInfluencersRepository }

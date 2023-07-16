@@ -10,11 +10,11 @@ export class UpdateInfluencerController {
     const body = request?.body
 
     if (!body) {
-      throw new Error('Fields for update is missing.')
+      throw new Error('Não existe campos para atualização')
     }
 
     if (!_id) {
-      throw new Error('User id is missing')
+      throw new Error('Id do usuário é obrigatório')
     }
 
     const result = await this.updateInfluencerService.execute(_id, request.body)

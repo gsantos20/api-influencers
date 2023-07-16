@@ -9,13 +9,13 @@ export class SessionService {
     const user = await this.userRepository.findUser({ Username: Email })
 
     if (!user) {
-      throw new Error('User does not exists!')
+      throw new Error('Usuário não existe!')
     }
 
     const passwordMatch = await compare(Password, user.Password)
 
     if (!passwordMatch) {
-      throw new Error('User or Password incorrect')
+      throw new Error('Usuário ou Senhas incorretas')
     }
 
     const token = sign({}, process.env.SECRET_JWT, {

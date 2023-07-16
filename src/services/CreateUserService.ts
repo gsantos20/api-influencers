@@ -13,7 +13,7 @@ export class CreateUserService {
     const existUser = await this.userRepository.findUser({ Username: Email })
 
     if (existUser) {
-      throw new Error('User already exists')
+      throw new Error('Usuário não existente')
     }
 
     const passwordHash = await hash(Password, 8)
@@ -27,7 +27,7 @@ export class CreateUserService {
     })
 
     if (!user) {
-      throw new Error('User not created')
+      throw new Error('Usuário não foi criado')
     }
 
     return user

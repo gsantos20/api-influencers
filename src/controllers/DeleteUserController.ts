@@ -9,7 +9,7 @@ export class DeleteUserController {
     const _id = request?.params?._id
 
     if (!_id) {
-      throw new Error('User id is missing')
+      throw new Error('Id do usuário é obrigatório')
     }
 
     const result = await this.deleteUserService.execute(_id)

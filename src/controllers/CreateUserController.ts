@@ -17,7 +17,7 @@ export class CreateUserController {
 
     requiredFields.forEach((el: string) => {
       if (!request?.body[el as keyof MongoUser]?.length) {
-        throw new Error(`Field ${el} is required`)
+        throw new Error(`Campo ${el} é obrigatório`)
       }
     })
 
@@ -25,7 +25,7 @@ export class CreateUserController {
 
     const emailIsValid = validator.isEmail(user.Email)
     if (!emailIsValid) {
-      throw new Error('E-mail is invalid')
+      throw new Error('E-mail é invalido')
     }
 
     const result = await this.createUserService.execute(user)

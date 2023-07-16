@@ -13,7 +13,7 @@ export class CreateInfluencerService {
     })
 
     if (existInfluencer) {
-      throw new Error('Influencer already exists')
+      throw new Error('Influenciador já existente')
     }
 
     const existPlataform = await new GetPlatformsService().execute({
@@ -21,13 +21,13 @@ export class CreateInfluencerService {
     })
 
     if (existPlataform.length === 0) {
-      throw new Error('Plataform does not exists')
+      throw new Error('Plataforma informada não existe')
     }
 
     const influencer = await this.influencerRepository.createInfluencer(params)
 
     if (!influencer) {
-      throw new Error('Influencer not created')
+      throw new Error('Influenciador não foi criado')
     }
 
     return influencer
