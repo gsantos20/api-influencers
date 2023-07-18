@@ -141,7 +141,7 @@ node dist/server.js
 | `FirstName` | `string` | Nome do Usuario |
 | `LastName` | `string` | Sobrenome do Usuario |
 
- Retorna um JSON de usuarios de acordo com os parametros.
+ Retorna um Array de objetos de usuarios de acordo com os parametros.
 
 ### 
 
@@ -175,12 +175,12 @@ Retorna um objeto com um token de login do usuario.
 ### 
 
 ```http
-  DELETE /api/v1/user/:id
+  DELETE /api/v1/user/:_id
 ```
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | Identificador do influenciador |      
+| `_id`      | `string` | Identificador do influenciador |      
 | `Bearear Token`      | `Bearer` | Token de autenticação de login |
 
 Deleta um usuario de acordo com o id.
@@ -195,38 +195,60 @@ Deleta um usuario de acordo com o id.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `firstName`      | `string` | Nome do influenciador |
-| `lastName`      | `string` | Sobrenome do influenciador |
-| `email`      | `string` | email do influenciador |
-| `Bearear Token`      | `Bearer` | Token de autenticação de login |
+| `NameInfluencer`      | `string` | Nome do influenciador |
+| `EmailInfluencer`      | `string` | E-mail do influenciador |
+| `ChannelUsername`      | `string` | Username do canal do influenciador |
+| `PlatformId`      | `number` | Id da Plataforma do criador de conteudo |
+| `NumSubs`      | `number` | Numero de seguidores |
+| `ContentCategory`      | `number` | Tipo de conteudo |
 
-Retorna um JSON de influenciadores de acordo com os parametros.
-
-### 
-
-```http
-  PATCH /api/v1/influencer/:id
-```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | Identificador do influenciador |      
-| `Bearear Token`      | `Bearer` | Token de autenticação de login |
-
-Atualiza um influenciador de acordo com o id.
+ Retorna um Array de objetos de influenciadores de acordo com os parametros.
 
 ### 
 
 ```http
-  DELETE /api/v1/influencer/:id
+  PATCH /api/v1/influencer/:_id
 ```
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | Identificador do influenciador |      
+| `_id`      | `string` | Identificador do influenciador |  
+| `Bearear Token`      | `Bearer` | Token de autenticação de login |
+| `NameInfluencer`      | `string` | Nome do influenciador |
+| `EmailInfluencer`      | `string` | E-mail do influenciador |
+| `ChannelUsername`      | `string` | Username do canal do influenciador |
+| `PlatformId`      | `number` | Id da Plataforma do criador de conteudo |
+| `NumSubs`      | `number` | Numero de seguidores |
+| `ContentCategory`      | `number` | Tipo de conteudo |
+
+Atualiza um influenciador de acordo com o id e parametros utilizados.
+
+### 
+
+```http
+  DELETE /api/v1/influencer/:_id
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `_id`      | `string` | Identificador do influenciador |      
 | `Bearear Token`      | `Bearer` | Token de autenticação de login |
 
 Deleta um influenciador de acordo com o id.
+
+ - #### Plataformas
+
+```http
+  GET /api/v1/platforms
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `PlatformId` | `string` | Id da plataforma |
+| `PlatformDs` | `string` | Nome da plataforma |
+| `Active` | `string` | Status da plataforma |
+
+ Retorna um Array de objetos de plataformas de acordo com os parametros.
 
 
 
