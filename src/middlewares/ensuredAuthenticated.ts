@@ -6,9 +6,10 @@ export const ensuredAuthenticated = () => {
     const authHeaders = request.headers.authorization
 
     if (!authHeaders) {
-      return response
-        .status(401)
-        .json({ success: false, data: 'Token is missing' })
+      return response.status(401).json({
+        success: false,
+        data: 'Token de autenticação é obrigatório'
+      })
     }
 
     const [, token] = authHeaders.split(' ')
@@ -21,7 +22,9 @@ export const ensuredAuthenticated = () => {
 
       return next()
     } catch (err) {
-      return response.status(401).end()
+      return response
+        .status(401)
+        .json({ success: false, data: 'Token de autenticação invalido' })
     }
   }
 }
