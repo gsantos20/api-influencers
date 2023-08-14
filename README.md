@@ -33,17 +33,9 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 Para rodar a API , você vai precisar adicionar as seguintes variáveis de ambiente no seu .env, o modelo esta no arquivo .env.example
 
-`MONGODB_URL` - Url de acesso do banco de dados mongo db.
+`DATABASE_URL` - Url de acesso do banco de dados.
 
-#### Exemplo : mongodb+srv://cluster0.example.mongodb.net
-
-`MONGODB_USERNAME` - Usuario para acesso a base de dados
-
-#### Exemplo : user_example 
-
-`MONGODB_PASSWORD` - Senha do usuario para acesso a base de dados
-
-#### Exemplo : password_example
+#### Exemplo : mysql://test:test@localhost:3306/test
 
 `SECRET_JWT` - Token gerado aleatoriamente para autenticação
 
