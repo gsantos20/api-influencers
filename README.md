@@ -5,7 +5,7 @@
 
 ## 💻 Sobre o projeto
 
-♻️ Ecoleta - é uma forma de conectar empresas e entidades de coleta de resíduos orgânicos e inorgânicos as pessoas que precisam descartar seus resíduos de maneira ecológica.
+📲 Influencers Dashboard - é um projeto que visa desenvolver um painel de controle completo para gerenciamento de influenciadores. O Influencers Dashboard oferece uma solução centralizada para empresas e marcas que desejam acompanhar, interagir e gerenciar suas parcerias com influenciadores de forma eficaz.
 
 
 
@@ -15,7 +15,7 @@
 
 Este projeto é divido em duas partes:
  1. [BackEnd](https://github.com/gsantos20/api-influencers.git)  - [API](https://api-influencers-gsantos20.vercel.app/)
- 2. [FrontEnd](https://github.com/gsantos20/dashboard-influencers.git) - [Web](https://api-influencers-gsantos20.vercel.app/)
+ 2. [FrontEnd](https://github.com/gsantos20/influencers-dashboard.git) - [Web](https://influencers-dashboard-gsantos20.vercel.app/)
 
 💡 Tanto o Frontend precisam que o Backend esteja sendo executado para funcionar.
 
@@ -141,7 +141,7 @@ node dist/server.js
 | `FirstName` | `string` | Nome do Usuario |
 | `LastName` | `string` | Sobrenome do Usuario |
 
- Retorna um JSON de usuarios de acordo com os parametros.
+ Retorna um Array de objetos de usuarios de acordo com os parametros.
 
 ### 
 
@@ -175,12 +175,12 @@ Retorna um objeto com um token de login do usuario.
 ### 
 
 ```http
-  DELETE /api/v1/user/:id
+  DELETE /api/v1/user/:_id
 ```
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | Identificador do influenciador |      
+| `_id`      | `string` | Identificador do influenciador |      
 | `Bearear Token`      | `Bearer` | Token de autenticação de login |
 
 Deleta um usuario de acordo com o id.
@@ -195,38 +195,60 @@ Deleta um usuario de acordo com o id.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `firstName`      | `string` | Nome do influenciador |
-| `lastName`      | `string` | Sobrenome do influenciador |
-| `email`      | `string` | email do influenciador |
-| `Bearear Token`      | `Bearer` | Token de autenticação de login |
+| `NameInfluencer`      | `string` | Nome do influenciador |
+| `EmailInfluencer`      | `string` | E-mail do influenciador |
+| `ChannelUsername`      | `string` | Username do canal do influenciador |
+| `PlatformId`      | `number` | Id da Plataforma do criador de conteudo |
+| `NumSubs`      | `number` | Numero de seguidores |
+| `ContentCategory`      | `number` | Tipo de conteudo |
 
-Retorna um JSON de influenciadores de acordo com os parametros.
-
-### 
-
-```http
-  PATCH /api/v1/influencer/:id
-```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | Identificador do influenciador |      
-| `Bearear Token`      | `Bearer` | Token de autenticação de login |
-
-Atualiza um influenciador de acordo com o id.
+ Retorna um Array de objetos de influenciadores de acordo com os parametros.
 
 ### 
 
 ```http
-  DELETE /api/v1/influencer/:id
+  PATCH /api/v1/influencer/:_id
 ```
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | Identificador do influenciador |      
+| `_id`      | `string` | Identificador do influenciador |  
+| `Bearear Token`      | `Bearer` | Token de autenticação de login |
+| `NameInfluencer`      | `string` | Nome do influenciador |
+| `EmailInfluencer`      | `string` | E-mail do influenciador |
+| `ChannelUsername`      | `string` | Username do canal do influenciador |
+| `PlatformId`      | `number` | Id da Plataforma do criador de conteudo |
+| `NumSubs`      | `number` | Numero de seguidores |
+| `ContentCategory`      | `number` | Tipo de conteudo |
+
+Atualiza um influenciador de acordo com o id e parametros utilizados.
+
+### 
+
+```http
+  DELETE /api/v1/influencer/:_id
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `_id`      | `string` | Identificador do influenciador |      
 | `Bearear Token`      | `Bearer` | Token de autenticação de login |
 
 Deleta um influenciador de acordo com o id.
+
+ - #### Plataformas
+
+```http
+  GET /api/v1/platforms
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `PlatformId` | `string` | Id da plataforma |
+| `PlatformDs` | `string` | Nome da plataforma |
+| `Active` | `string` | Status da plataforma |
+
+ Retorna um Array de objetos de plataformas de acordo com os parametros.
 
 
 
