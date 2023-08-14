@@ -4,6 +4,7 @@ import { config } from 'dotenv'
 import cors, { CorsOptions } from 'cors'
 import routes from './routes/routes'
 import bodyParserErrorHandler from 'express-body-parser-error-handler'
+import { queryParser } from 'express-query-parser'
 
 import { MongoClient } from './database/mongo'
 
@@ -20,7 +21,14 @@ async function main() {
   app.use(express.json())
   app.use(bodyParserErrorHandler())
 
-  await MongoClient.connect()
+  app.use(
+    queryParser({
+      parseNull: true,
+      parseUndefined: true,
+      parseBoolean: true,
+      parseNumber: true
+    })
+  )
 
   app.use('/api/v1/', routes)
 
