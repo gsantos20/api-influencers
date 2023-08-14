@@ -10,22 +10,23 @@ import { DeleteUserService } from '@services/DeleteUserService'
 import { DeleteUserController } from '@controllers/DeleteUserController'
 import { GetUsersService } from '@services/GetUsersService'
 import { GetUsersController } from '@controllers/GetUsersController'
+import { PrismaUsersRepository } from '@repositories/prisma/PrismaUsersRepository'
 
 const userRoutes: Router = express.Router()
 
 require('express-async-errors')
 
-const mongoUsersRepository = new MongoUsersRepository()
+const prsimaUsersRepository = new PrismaUsersRepository()
 
 userRoutes.get('/users', ensuredAuthenticated(), async (req, res) => {
-  const getUsersService = new GetUsersService(mongoUsersRepository)
+  const getUsersService = new GetUsersService(prsimaUsersRepository)
   const getUsersController = new GetUsersController(getUsersService)
 
   getUsersController.handle(req, res)
 })
 
 userRoutes.post('/user', async (req, res) => {
-  const createUserService = new CreateUserService(mongoUsersRepository)
+  const createUserService = new CreateUserService(prsimaUsersRepository)
   const createUserController = new CreateUserController(createUserService)
 
   return createUserController.handle(req, res)
@@ -34,14 +35,14 @@ userRoutes.post('/user', async (req, res) => {
 userRoutes.post('/login', async (req, res) => {
   const mongoUsersRepository = new MongoUsersRepository()
 
-  const sessionService = new SessionService(mongoUsersRepository)
+  const sessionService = new SessionService(prsimaUsersRepository)
   const sessionController = new SessionController(sessionService)
 
   return sessionController.handle(req, res)
 })
 
-userRoutes.delete('/user/:_id', ensuredAuthenticated(), async (req, res) => {
-  const deleteUserService = new DeleteUserService(mongoUsersRepository)
+userRoutes.delete('/user/:id', ensuredAuthenticated(), async (req, res) => {
+  const deleteUserService = new DeleteUserService(prsimaUsersRepository)
   const deleteUserController = new DeleteUserController(deleteUserService)
 
   return deleteUserController.handle(req, res)

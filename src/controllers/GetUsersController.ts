@@ -4,25 +4,23 @@
 import { Request, Response, NextFunction } from 'express'
 import { User } from '@models/User'
 import { GetUsersService } from '@services/GetUsersService'
-import _, { pick } from 'lodash'
 
 export class GetUsersController {
   constructor(private readonly getUsersService: GetUsersService) {}
 
   async handle(request: Request, response: Response) {
-    const queryParams = Object.keys(request.query).reduce((acc, key) => {
-      acc[_.capitalize(key)] = request.query[key]
-      return acc
-    }, {})
+    const { id, username, email, firstName, lastName, createdAt, updatedAt } =
+      request.query as Partial<User>
 
-    const params = pick(queryParams as Partial<User>, [
-      'Username',
-      'Email',
-      'FirstName',
-      'LastName'
-    ])
-
-    const result = await this.getUsersService.execute(params)
+    const result = await this.getUsersService.execute({
+      id,
+      username,
+      email,
+      firstName,
+      lastName,
+      createdAt,
+      updatedAt
+    })
 
     return response.json({ success: true, data: result })
   }

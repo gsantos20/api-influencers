@@ -1,21 +1,24 @@
 import { omit } from 'lodash'
-import { User } from '../models/User'
 import { IUsersRepository } from '@repositories/IUsersRepositories'
+import { User } from '@prisma/client'
+import moment from 'moment'
 
 export class GetUsersService {
   constructor(private userRepository: IUsersRepository) {}
   async execute(
     params: Partial<User>
-  ): Promise<Omit<User, 'Password'>[] | Error> {
+  ): Promise<Omit<User, 'password'>[] | Error> {
     const filter = Object.keys(params).reduce((obj, key) => {
       const value = params[key]
 
-      if (/^-?\d+$/.test(value)) {
-        obj[key] = { $eq: parseInt(value) }
-      } else if (/^(true|false)$/i.test(value)) {
-        obj[key] = { $e: value.toLowerCase() === 'true' ? true : false }
-      } else {
-        obj[key] = { $regex: value, $options: 'i' }
+      if (value) {
+        if (moment(value).isValid() && value.lenght >= 8) {
+          obj[key] = moment.utc(value).toISOString()
+        } else if (value instanceof String) {
+          obj[key] = { contains: value }
+        } else {
+          obj[key] = value
+        }
       }
 
       return obj
@@ -24,7 +27,7 @@ export class GetUsersService {
     const users = await this.userRepository.getUsers(filter)
 
     const result = users.map((user: User) => {
-      const userWithoutPassword = omit(user, 'Password')
+      const userWithoutPassword = omit(user, ['password'])
       return userWithoutPassword
     })
 

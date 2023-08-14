@@ -7,12 +7,9 @@ import { Login } from '@models/Login'
 export class SessionController {
   constructor(private sessionService: SessionService) {}
   async handle(request: Request, response: Response) {
-    const queryParams = Object.keys(request.body).reduce((acc, key) => {
-      acc[_.capitalize(key)] = request.body[key]
-      return acc
-    }, {} as Login)
+    const queryParams = request.body as Login
 
-    const requiredFields = ['Email', 'Password']
+    const requiredFields = ['email', 'password']
 
     for (const field of requiredFields) {
       if (!queryParams[field as keyof User]?.length) {

@@ -1,11 +1,13 @@
-import { User } from '@models/User'
-import { ObjectId } from 'mongodb'
+import { User } from '@prisma/client'
 
-export type MongoUser = Omit<User, '_id'>
+export type MongoUser = Omit<User, 'id'>
+export type PrismaUser = Omit<User, 'id'>
+export type CreatePrismaUser = Omit<PrismaUser, 'createdAt' | 'updatedAt'>
 
 export interface IUsersRepository {
-  getUsers(params: Partial<MongoUser>): Promise<User[] | []>
-  createUser(user: MongoUser): Promise<User | null>
-  findUser(params: any): Promise<User | null>
-  deleteUser(_id: ObjectId): Promise<boolean | null>
+  getUsers(params: Partial<PrismaUser>): Promise<User[] | []>
+  createUser(user: CreatePrismaUser): Promise<User | null>
+  findUser(params: Partial<PrismaUser>): Promise<User | null>
+  findUserById(id: number): Promise<User | null>
+  deleteUser(id: number): Promise<boolean | null>
 }

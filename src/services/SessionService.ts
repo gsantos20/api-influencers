@@ -5,21 +5,21 @@ import { Login } from '@models/Login'
 
 export class SessionService {
   constructor(private readonly userRepository: IUsersRepository) {}
-  async execute({ Email, Password }: Login) {
-    const user = await this.userRepository.findUser({ Username: Email })
+  async execute({ email, password }: Login) {
+    const user = await this.userRepository.findUser({ email: email })
 
     if (!user) {
       throw new Error('Usuário não existe!')
     }
 
-    const passwordMatch = await compare(Password, user.Password)
+    const passwordMatch = await compare(password, user.password)
 
     if (!passwordMatch) {
-      throw new Error('Usuário ou Senhas incorretas')
+      throw new Error('Usuário ou Senha incorretas!')
     }
 
     const token = sign({}, process.env.SECRET_JWT, {
-      subject: user._id.toString()
+      subject: user.id.toString()
     })
 
     return { token }
