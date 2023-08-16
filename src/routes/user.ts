@@ -5,7 +5,6 @@ import { CreateUserController } from '@controllers/CreateUserController'
 import { CreateUserService } from '@services/CreateUserService'
 import { SessionService } from '@services/SessionService'
 import { SessionController } from '@controllers/SessionController'
-import { MongoUsersRepository } from '@repositories/mongo/MongoUsersRepository'
 import { DeleteUserService } from '@services/DeleteUserService'
 import { DeleteUserController } from '@controllers/DeleteUserController'
 import { GetUsersService } from '@services/GetUsersService'
@@ -33,8 +32,6 @@ userRoutes.post('/user', async (req, res) => {
 })
 
 userRoutes.post('/login', async (req, res) => {
-  const mongoUsersRepository = new MongoUsersRepository()
-
   const sessionService = new SessionService(prsimaUsersRepository)
   const sessionController = new SessionController(sessionService)
 
