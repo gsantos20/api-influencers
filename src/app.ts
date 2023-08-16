@@ -5,8 +5,8 @@ import cors, { CorsOptions } from 'cors'
 import routes from './routes/routes'
 import bodyParserErrorHandler from 'express-body-parser-error-handler'
 import { queryParser } from 'express-query-parser'
-
-import { MongoClient } from './database/mongo'
+import { prisma } from 'database/prisma'
+import { Prisma } from '@prisma/client'
 
 const app = express()
 
@@ -50,6 +50,7 @@ async function main() {
         data: err.message
       })
     }
+
     res.status(500).json({
       success: false,
       data: `Internal server error - ${err}`
