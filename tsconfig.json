@@ -17,9 +17,8 @@
     "skipLibCheck": true,
     "baseUrl": "src/",
     "paths": {
-      "@database/*": ["database/*"],
-      "@models/*": ["models/*"],
       "@controllers/*": ["controllers/*"],
+      "@models/*": ["models/*"],
       "@repositories/*": ["repositories/*"],
       "@services/*": ["services/*"],
       "@middlewares/*": ["middlewares/*"],
