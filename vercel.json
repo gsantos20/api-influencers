@@ -1,10 +1,10 @@
 {
   "version": 2,
+  "outputDirectory": "dist",
   "builds" : [
     {
-      "src": "package.json",
-      "use": "@vercel/node",
-      "config": { "distDir": "dist" }
+      "src": "dist/server.js",
+      "use": "@vercel/node"
 
     }
   ],
