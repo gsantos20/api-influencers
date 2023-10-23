@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "baseUrl": "src",
+    "baseUrl": "src/",
     "paths": {
       "@controllers/*": ["controllers/*"],
       "@models/*": ["models/*"],
