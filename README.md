@@ -113,7 +113,7 @@ npm run test
 
 npm build
 
-node public/server.js
+node dist/server.js
 ```
 
 

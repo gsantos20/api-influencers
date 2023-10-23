@@ -3,7 +3,7 @@
     "target": "es2021",
     "module": "commonjs",
     "lib": ["es6"],
-    "outDir": "./public",
+    "outDir": "./dist",
     "rootDir": "./src",
     "removeComments": true,
     "allowJs": true,
