@@ -3,7 +3,7 @@
   "outputDirectory": "dist/",
   "builds" : [
     {
-      "src": "src/server.ts",
+      "src": "package.json",
       "use": "@vercel/node"
     }
   ],
