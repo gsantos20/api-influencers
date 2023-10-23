@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import validator from 'validator'
-import { Request, Response } from 'express'
-import { CreateUserService } from '@services/CreateUserService'
 import { MongoUser, PrismaUser } from '@repositories/IUsersRepositories'
+import { CreateUserService } from '@services/CreateUserService'
+import { Request, Response } from 'express'
+import validator from 'validator'
 
 export class CreateUserController {
   constructor(private createUserService: CreateUserService) {}
@@ -30,6 +30,6 @@ export class CreateUserController {
 
     const result = await this.createUserService.execute(user)
 
-    return response.json({ success: true, data: result })
+    return response.json({ success: true, data: result }).status(201)
   }
 }

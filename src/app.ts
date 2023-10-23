@@ -5,8 +5,6 @@ import cors, { CorsOptions } from 'cors'
 import routes from './routes/routes'
 import bodyParserErrorHandler from 'express-body-parser-error-handler'
 import { queryParser } from 'express-query-parser'
-import { prisma } from 'database/prisma'
-import { Prisma } from '@prisma/client'
 
 const app = express()
 

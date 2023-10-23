@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Request, Response } from 'express'
 import { UpdateInfluencerService } from '@services/UpdateInfluencerService'
+import { Request, Response } from 'express'
 
 export class UpdateInfluencerController {
   constructor(private updateInfluencerService: UpdateInfluencerService) {}
@@ -19,6 +19,6 @@ export class UpdateInfluencerController {
 
     const result = await this.updateInfluencerService.execute(_id, request.body)
 
-    return response.json({ success: true, data: result })
+    return response.json({ success: true, data: result }).status(201)
   }
 }

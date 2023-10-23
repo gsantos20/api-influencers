@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { MongoInfluencer } from '@repositories/IInfluencersRepositories'
+import { CreateInfluencerService } from '@services/CreateInfluencerService'
 import { Request, Response } from 'express'
 import validator from 'validator'
-import { CreateInfluencerService } from '@services/CreateInfluencerService'
-import { MongoInfluencer } from '@repositories/IInfluencersRepositories'
 
 export class CreateInfluencerController {
   constructor(private createInfluencerService: CreateInfluencerService) {}
@@ -33,6 +33,6 @@ export class CreateInfluencerController {
 
     const result = await this.createInfluencerService.execute(request.body)
 
-    return response.json({ success: true, data: result })
+    return response.json({ success: true, data: result }).status(201)
   }
 }

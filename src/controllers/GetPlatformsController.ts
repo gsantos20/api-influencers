@@ -1,7 +1,7 @@
-import { Request, Response } from 'express'
-import { pick } from 'lodash'
 import { Platform } from '@models/Platform'
 import { GetPlatformsService } from '@services/GetPlatformsService'
+import { Request, Response } from 'express'
+import { pick } from 'lodash'
 
 export class GetPlatformController {
   constructor(private getPlatformsService: GetPlatformsService) {}
@@ -14,6 +14,6 @@ export class GetPlatformController {
 
     const result = await this.getPlatformsService.execute(params)
 
-    return response.json({ success: true, data: result })
+    return response.json({ success: true, data: result }).status(200)
   }
 }

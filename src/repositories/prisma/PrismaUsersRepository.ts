@@ -1,6 +1,6 @@
-import { User } from '@prisma/client'
-import { IUsersRepository, PrismaUser } from '../IUsersRepositories'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { prisma } from 'database/prisma'
+import { IUsersRepository, PrismaUser } from '../IUsersRepositories'
 
 class PrismaUsersRepository implements IUsersRepository {
   async getUsers(params: Partial<PrismaUser>) {
