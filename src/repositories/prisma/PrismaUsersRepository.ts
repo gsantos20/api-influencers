@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { prisma } from 'database/prisma'
+import { prisma } from '@database/prisma'
 import { IUsersRepository, PrismaUser } from '../IUsersRepositories'
 
 class PrismaUsersRepository implements IUsersRepository {
@@ -57,3 +57,4 @@ class PrismaUsersRepository implements IUsersRepository {
 }
 
 export { PrismaUsersRepository }
+

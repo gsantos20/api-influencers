@@ -11,16 +11,38 @@ datasource db {
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
-  username      String    @unique
-  email         String    @unique
-  password      String
-  firstName     String
-  lastName      String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map(name: "users")
 }
 
+model Platform {
+  id            Int          @id @default(autoincrement())
+  plataformName String
+  active        String       @default("S")
+  Influencer    Influencer[]
+
+  @@map(name: "Platform")
+}
+
+model Influencer {
+  id              Int      @id @default(autoincrement())
+  nameInfluencer  String   @unique
+  emailInfluencer String   @unique
+  channelUsername String
+  platform        Platform @relation(fields: [platformId], references: [id])
+  platformId      Int
+  numSubs         Int
+  contentCategory String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map(name: "Influencer")
+}

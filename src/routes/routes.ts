@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import express, { NextFunction, Request, Response, Router } from 'express'
 import { methodNotAllowed } from '@middlewares/methodNotAllowed'
-import userRoutes from './user'
+import express, { Router } from 'express'
 import influencerRoutes from './influencer'
+import userRoutes from './user'
 
-import { ensuredAuthenticated } from '@middlewares/ensuredAuthenticated'
 import { GetPlatformController } from '@controllers/GetPlatformsController'
+import { ensuredAuthenticated } from '@middlewares/ensuredAuthenticated'
 import { GetPlatformsService } from '@services/GetPlatformsService'
 
 const routes: Router = express.Router()
