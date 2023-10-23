@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
     "start": "node dist/server.js",
-    "vercel-build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored --no-comments",
+    "vercel-build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored --no-comments && npx prrisma migrate deploy",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored --no-comments"
   },
   "keywords": [],
