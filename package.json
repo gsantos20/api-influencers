@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
     "start": "node dist/server.js",
-    "build": "mkdir dist && babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored --no-comments",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored --no-comments",
     "vercel-build": "npm run build && npm run prisma-build",
     "prisma-build": "npx prisma generate && npx prisma migrate deploy"
 
