@@ -41,7 +41,7 @@ async function main() {
     })
   })
 
-  routes.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error) {
       return res.status(400).json({
         success: false,
@@ -53,6 +53,8 @@ async function main() {
       success: false,
       data: `Internal server error - ${err}`
     })
+
+    next()
   })
 }
 
