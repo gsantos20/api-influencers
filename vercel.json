@@ -13,6 +13,10 @@
         "dest": "dist/server.js"
       }
   ],
+  "github": {
+    "silent": true,
+    "autoJobCancelation": true
+  },
   "installCommand": "yarn install --production --frozen-lockfile",
   "buildCommand": "yarn vercel-build"
 }
