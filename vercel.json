@@ -17,6 +17,11 @@
     "silent": true,
     "autoJobCancelation": true
   },
+  "git": {
+    "deploymentEnabled": {
+      "main": false
+    }
+  },
   "installCommand": "yarn install --production --frozen-lockfile",
   "buildCommand": "yarn vercel-build"
 }
