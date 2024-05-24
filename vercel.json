@@ -13,5 +13,6 @@
         "dest": "dist/server.js"
       }
   ],
-  "installCommand": "yarn install --production"
+  "installCommand": "yarn install --production --frozen-lockfile",
+  "buildCommand": "yarn vercel-build"
 }
